@@ -1,10 +1,128 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+            crossorigin="anonymous"></script>
 </head>
 <body>
-$END$
+<h1 style="background-color:cornflowerblue">-----Blog-----</h1>
+<a href="/create" class="btn btn-info">Create new Blog</a>
+<div>
+    <form action="/blog">
+        <input type="text" th:placeholder="search" name="title">
+        <button class="btn btn-outline-success" type="submit" style="font-size: 15px">search</button>
+    </form>
+
+
+</div>
+<th:block th:if="${mesage}">
+    <p th:text="${message}"></p>
+</th:block>
+<table class="table table-warning table-striped-columns">
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Content</th>
+        <th>Author</th>
+        <th>Date</th>
+        <th>Category</th>
+        <th>Edit</th>
+        <th>View</th>
+        <th>Delete</th>
+
+    </tr>
+    </thead>
+    <tbody th:each="blog : ${blogPage}">
+    <tr>
+        <td th:text="${blog.title}"></td>
+        <td th:text="${blog.content}"></td>
+        <td th:text="${blog.author}"></td>
+        <td th:text="${blog.date}"></td>
+        <td th:text="${blog.category.name}"></td>
+        <td><a th:href="@{/edit/{id}(id=${blog.getId()})}" class="btn btn-primary">Edit</a></td>
+        <th><a th:href="@{/{id}/view(id=${blog.getId()})}" class="btn btn-warning">View</a></th>
+
+        <td>
+            <button th:attr="onclick=|infoDelete('${blog.id}','${blog.title}')|"
+               class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">
+            Delete
+            </button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<!-- Modal Delete -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form th:action="@{/delete}" method="post">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Xóa Blog!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input name="deleteId" hidden id="deleteId">
+                    <pre>Bạn chắn chắn muốn xóa  ?</pre>
+                    <pre style="color: darkred" id="deleteName"></pre>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Hủy</button>
+                    <button  type="submit" class="btn btn-info">Xác nhận</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!--phân trang-->
+<div>
+    <nav aria-label="..." class="justify-content-center d-flex">
+        <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link" th:href="@{/blog/(page=${blogPage.number - 1})}"
+                   th:if="${blogPage.hasPrevious()}">&laquo;</a>
+            </li>
+            <li class="page-item disabled" th:unless="${blogPage.hasPrevious()}">
+                <a class="page-link">&laquo;</a>
+            </li>
+
+            <li class="page-item">
+                <a class="page-link" th:href="@{/blog/(page=${blogPage.number - 1})}"
+                   th:if="${blogPage.hasPrevious()}" th:text="${blogPage.number}"></a>
+            </li>
+
+            <li class="page-item active">
+                <a class="page-link" th:href="@{/blog/(page=${blogPage.number})}"
+                   th:text="${blogPage.number + 1}">
+                    <span class="sr-only">(trang hiện tại)</span></a>
+            </li>
+
+            <li class="page-item">
+                <a class="page-link" th:href="@{/blog/(page=${blogPage.number+1})}" th:text="${blogPage.number+2}"
+                   th:if="${blogPage.hasNext()}"></a>
+            </li>
+
+            <li class="page-item">
+                <a class="page-link" th:href="@{/blog/(page=${blogPage.number+1})}"
+                   th:if="${blogPage.hasNext()}">&raquo;</a>
+            </li>
+            <li class="page-item disabled" th:unless="${blogPage.hasNext()}">
+                <a class="page-link">&raquo;</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
 </body>
+<script>
+    function infoDelete(id, name) {
+        document.getElementById("deleteId").value = id;
+        document.getElementById("deleteName").innerText = name;
+    }
+</script>
 </html>
