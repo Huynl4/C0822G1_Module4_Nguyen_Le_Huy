@@ -31,7 +31,7 @@ public class CustomerController {
     public String showAndSearch(@RequestParam(required = false, defaultValue = "") String name,
                                 @RequestParam(required = false, defaultValue = "") String email,
                                 @RequestParam(required = false, defaultValue = "") String customerTypeId, Model model,
-                                @PageableDefault(page = 0, size = 4) Pageable pageable) {
+                                @PageableDefault(size = 5) Pageable pageable) {
         Page<Customer> customers = iCustomerService.search(pageable, name, email, customerTypeId);
         model.addAttribute("customers", customers);
         model.addAttribute("name", name);
@@ -48,18 +48,55 @@ public class CustomerController {
         model.addAttribute("customerTypeList", customerTypeList);
         return "customer/create";
     }
+
     @PostMapping("/create")
     public String saveCustomer(@Validated @ModelAttribute("customerDto") CustomerDto customerDto, BindingResult bindingResult,
                                RedirectAttributes redirectAttributes, Model model, Pageable pageable) {
 
         new CustomerDto().validate(customerDto, bindingResult);
         if (bindingResult.hasErrors()) {
+            model.addAttribute("customerTypeList", iCustomerTypeService.findAll());
             return "customer/create";
         }
         Customer customer = new Customer();
+        customer.setFlagDelete(true);
         BeanUtils.copyProperties(customerDto, customer);
         iCustomerService.save(customer);
         redirectAttributes.addFlashAttribute("mess", "thêm thành công");
+        return "redirect:/customer";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String showFormEdit(@PathVariable Long id, Model model) {
+        CustomerDto customerDto = new CustomerDto();
+        Customer customer = iCustomerService.findById(id);
+        List<CustomerType> customerTypeList = iCustomerTypeService.findAll();
+        model.addAttribute("customerTypeList", customerTypeList);
+        BeanUtils.copyProperties(customer, customerDto);
+        model.addAttribute("customerDto", customerDto);
+        return "customer/edit";
+    }
+
+    @PostMapping("/edit")
+    public String saveEdit(@Validated @ModelAttribute("customerDto") CustomerDto customerDto, BindingResult bindingResult, Model model
+            , RedirectAttributes redirectAttributes) {
+        if (bindingResult.hasErrors()) {
+            List<CustomerType> customerTypeList = iCustomerTypeService.findAll();
+            model.addAttribute("customerTypeList", customerTypeList);
+            return "customer/edit";
+        }
+        Customer customer = new Customer();
+        customer.setFlagDelete(true);
+        BeanUtils.copyProperties(customerDto, customer);
+        iCustomerService.save(customer);
+        redirectAttributes.addFlashAttribute("mess", "Sửa thành công");
+        return "redirect:/customer";
+    }
+
+    @PostMapping("/delete")
+    public String delete(@RequestParam("deleteId") Long id, RedirectAttributes redirectAttributes) {
+        iCustomerService.remove(id);
+        redirectAttributes.addFlashAttribute("mess", "xóa thành công");
         return "redirect:/customer";
     }
 }

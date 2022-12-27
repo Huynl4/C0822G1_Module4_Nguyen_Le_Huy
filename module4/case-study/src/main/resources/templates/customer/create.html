@@ -13,11 +13,11 @@
 </head>
 <body>
 <div class="bg-image"
-     style="background-image: url('https://cdn.wallpapersafari.com/97/97/eTxH5r.jpg');
+     style="background-image: url('https://cdn.tgdd.vn/Files/2020/10/29/1303001/the-lake-6-dragged_800x450.jpg');
             height: 100vh">
 
-    <h1>Thêm mới khách hàng</h1>
-    <p>
+    <h1 style="margin-left: 40%;color: aliceblue" >Thêm mới khách hàng</h1>
+    <p style="margin-left: 40%">
         <a href="/customer/" class="btn btn-warning">Danh sách khách hàng</a>
     </p>
     <form th:action="@{/customer/create}" th:object="${customerDto}" method="post">
@@ -70,7 +70,7 @@
                 </td>
             </tr>
         </table>
-        <input class="btn btn-info" type="submit" value="Xác nhận"/>
+        <input style="margin-left: 40%" class="btn btn-info" type="submit" value="Xác nhận"/>
     </form>
 </div>
 </body>

@@ -12,10 +12,9 @@
             crossorigin="anonymous"></script>
 </head>
 <body>
-<h1 style="text-align: center;background-color: cornflowerblue">CUSTOMER</h1>
-<a th:href="@{/}" class="btn btn-warning">trang chủ</a>
-<a th:href="@{/customer/create}" class="btn btn-warning">Thêm mới khách hàng</a>
-<a th:href="@{/customer}" class="btn btn-warning">Danh sách khách hàng</a>
+<h1 style="text-align: center;background-color: cornflowerblue">KHÁCH HÀNG</h1>
+<a th:href="@{/}" class="btn btn-info">Trang chủ</a>
+
 <div th:if="${mess}">
     <p style="color: cornflowerblue; font-weight: bold" th:text="${mess}"></p>
 </div>
@@ -26,8 +25,9 @@
                    th:value="${name}">
             <input class="form-control me-2" name="email" type="search" placeholder="Email" aria-label="Search"
                    th:value="${email}">
-            <select th:field="*{customerType}">
-                <option th:each="customer:${customerType}" th:value="${customer.id}"th:text="${customer.name}"></option>
+            <select class="form-control me-1" th:field="*{customerType}">
+                <option th:each="customer:${customerType}" th:value="${customer.id}"
+                        th:text="${customer.name}"></option>
             </select>
             <button class="btn btn-outline-success" type="submit">Tìm kiếm</button>
         </form>
@@ -59,7 +59,7 @@
             <td th:text="${customer.email}"></td>
             <td th:text="${customer.address}"></td>
             <td th:text="${customer.customerType.name}"></td>
-            <td><a th:href="@{/customer/edit/__${customer.id}__ }" class="btn btn-primary">Sửa</a></td>
+            <td><a th:href="@{/customer/edit/__${customer.id}__ }" class="btn btn-secondary">Sửa</a></td>
             <td>
                 <a th:attr="onclick=|infoDelete('${customer.id}','${customer.name}')|"
                    class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
@@ -69,6 +69,11 @@
         </tr>
     </th:block>
 </table>
+
+<a th:href="@{/customer/create}" class="btn btn-warning">Thêm mới khách hàng</a>
+<a th:href="@{/customer}" class="btn btn-warning">Danh sách khách hàng</a>
+
+
 <!-- Modal Delete -->
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -120,7 +125,8 @@
             </li>
 
             <li class="page-item">
-                <a class="page-link" th:href="@{/customer/(page=${customers.number+1},name=${name})}" th:if="${customers.hasNext()}">&raquo;</a>
+                <a class="page-link" th:href="@{/customer/(page=${customers.number+1},name=${name})}"
+                   th:if="${customers.hasNext()}">&raquo;</a>
             </li>
             <li class="page-item disabled" th:unless="${customers.hasNext()}">
                 <a class="page-link">&raquo;</a>
