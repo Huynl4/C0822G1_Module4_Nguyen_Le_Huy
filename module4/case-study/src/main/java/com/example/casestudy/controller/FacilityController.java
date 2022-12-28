@@ -55,14 +55,54 @@ public class FacilityController {
         return "facility/create";
     }
 
-    @PostMapping("/save")
+    @PostMapping("/create")
     public String saveFacility(@Validated @ModelAttribute("facilityDto") FacilityDto facilityDto, BindingResult bindingResult,
-                               RedirectAttributes redirectAttributes, Model model, Pageable pageable) {
+                               RedirectAttributes redirectAttributes, Model model) {
         model.addAttribute("facilityTypeList", facilityTypeService.findAll());
         Facility facility = new Facility();
+        facility.setFlagDelete(true);
         BeanUtils.copyProperties(facilityDto, facility);
         facilityService.save(facility);
         redirectAttributes.addFlashAttribute("mess", "thêm mới thành công");
+        return "redirect:/facility";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String showEdit(@PathVariable Long id, Model model) {
+        FacilityDto facilityDto = new FacilityDto();
+        Facility facility = facilityService.findById(id);
+        List<FacilityType> facilityTypeList = facilityTypeService.findAll();
+        List<RentType> rentTypeList = rentTypeService.findAll();
+        model.addAttribute("facilityTypeList", facilityTypeList);
+        model.addAttribute("rentTypeList", rentTypeList);
+        BeanUtils.copyProperties(facility, facilityDto);
+        model.addAttribute("facilityDto", facilityDto);
+        return "facility/edit";
+    }
+
+    @PostMapping("/edit")
+    public String save(@Validated @ModelAttribute("facilityDto") FacilityDto facilityDto,
+                       BindingResult bindingResult, Model model,
+                       RedirectAttributes redirectAttributes) {
+        if (bindingResult.hasErrors()) {
+            List<FacilityType> facilityTypeList = facilityTypeService.findAll();
+            List<RentType> rentTypeList = rentTypeService.findAll();
+            model.addAttribute("facilityTypeList", facilityTypeList);
+            model.addAttribute("rentTypeList", rentTypeList);
+            return "facility/edit";
+        }
+        Facility facility = new Facility();
+        facility.setFlagDelete(true);
+        BeanUtils.copyProperties(facilityDto, facility);
+        facilityService.save(facility);
+        redirectAttributes.addFlashAttribute("mess", "sửa thành công");
+        return "redirect:/facility";
+    }
+
+    @PostMapping("/delete")
+    public String delete(@RequestParam("deleteId") Long id, RedirectAttributes redirectAttributes) {
+        facilityService.remove(id);
+        redirectAttributes.addFlashAttribute("mess", "xóa thành công");
         return "redirect:/facility";
     }
 }

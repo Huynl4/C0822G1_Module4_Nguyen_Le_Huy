@@ -16,8 +16,7 @@
 <body>
 <h1 style="text-align: center;background-color: cornflowerblue">FACILITY</h1>
 <a th:href="@{/}" class="btn btn-warning">trang chủ</a>
-<a th:href="@{/facility/create}" class="btn btn-warning">Thêm mới dịch vụ</a>
-<a th:href="@{/facility}" class="btn btn-warning">Danh sách dịch vụ</a>
+
 <div th:if="${mess}">
     <p style="color: cornflowerblue; font-weight: bold" th:text="${mess}"></p>
 </div>
@@ -66,7 +65,7 @@
             <td th:text="${facility.poolArea}"></td>
             <td th:text="${facility.numberFloor}"></td>
             <td th:text="${facility.facilityFree}"></td>
-            <td><a th:href="@{/facility/edit/__${facility.id}__ }" class="btn btn-primary">Sửa</a></td>
+            <td><a th:href="@{/facility/edit/__${facility.id}__ }" class="btn btn-secondary">Sửa</a></td>
             <td>
                 <a th:attr="onclick=|infoDelete('${facility.id}','${facility.name}')|"
                    class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
@@ -76,6 +75,10 @@
         </tr>
     </th:block>
 </table>
+
+<a th:href="@{/facility/create}" class="btn btn-info">Thêm mới dịch vụ</a>
+<a th:href="@{/facility}" class="btn btn-info">Danh sách dịch vụ</a>
+
 <!-- Modal Delete -->
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -100,7 +103,7 @@
 </div>
 
 <!--phân trang-->
-<div>
+<div style="margin-left: 80%">
     <nav aria-label="..." class="justify-content-center d-flex">
         <ul class="pagination">
             <li class="page-item">

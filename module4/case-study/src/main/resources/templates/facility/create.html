@@ -23,12 +23,24 @@
                     <div class="card-body p-4 p-md-5">
                         <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Thêm mới dịch vụ</h3>
 
-                        <form th:action="@{/facility/create}" th:object="${facilityDto}" method="post">
+                        <form th:action="@{/facility/create}"
+                              th:object="${facilityDto}" method="post">
                             <input type="hidden" th:field="*{id}">
+                            <div class="mb-4">
+                                <select id="facilityType" th:field="*{facilityType}" class="select"
+                                        onchange="selectFacilityType()">
+                                    <option th:each="items:${facilityTypeList}"
+                                            th:text="${items.name}"
+                                            th:value="${items.id}">
+                                    </option>
+                                </select>
+                                <label class="form-label">Loại dịch vụ</label>
+                            </div>
                             <div class="form-outline mb-4">
                                 <input type="text" th:field="*{name}" class="form-control"/>
                                 <label class="form-label">Tên dịch vụ</label>
                             </div>
+
                             <div class="form-outline mb-4">
                                 <input type="text" th:field="*{area}" class="form-control"/>
                                 <label class="form-label">Diện tích</label>
@@ -39,49 +51,39 @@
                                 <label class="form-label">Giá</label>
                             </div>
 
-                            <div class="form-outline mb-4">
-                                <input id="standardRoom" type="text" th:field="*{standardRoom}" class="form-control"/>
+                            <div class="form-outline mb-4" id="standardRoom">
+                                <input type="text" th:field="*{standardRoom}" class="form-control"/>
                                 <label class="form-label">Loại phòng</label>
                             </div>
 
-                            <div class="form-outline mb-4">
-                                <input id="description" type="text" th:field="*{description}" class="form-control"/>
+                            <div class="form-outline mb-4" id="description">
+                                <input type="text" th:field="*{description}" class="form-control"/>
                                 <label class="form-label">Mô tả</label>
                             </div>
 
-                            <div class="form-outline mb-4">
-                                <input id="poolArea" type="text" th:field="*{poolArea}" class="form-control"/>
+                            <div class="form-outline mb-4" id="poolArea">
+                                <input type="text" th:field="*{poolArea}" class="form-control"/>
                                 <label class="form-label">Diện tích hồ bơi</label>
                             </div>
 
-                            <div class="form-outline mb-4">
-                                <input id="numberFloor" type="text" th:field="*{numberFloor}" class="form-control"/>
+                            <div class="form-outline mb-4" id="numberFloor">
+                                <input type="text" th:field="*{numberFloor}" class="form-control"/>
                                 <label class="form-label">Số tầng</label>
                             </div>
 
-                            <div class="form-outline mb-4">
-                                <input id="facilityFree" type="text" th:field="*{facilityFree}" class="form-control"/>
+                            <div class="form-outline mb-4" id="facilityFree">
+                                <input type="text" th:field="*{facilityFree}" class="form-control"/>
                                 <label class="form-label">Dịch vụ miễn kèm theo</label>
                             </div>
 
                             <div class="mb-4">
-
                                 <select th:field="*{rentType}" class="select">
-                                    <option th:each="items:${rentTypeList}" th:text="${items.name}"
+                                    <option th:each="items:${rentTypeList}"
+                                            th:text="${items.name}"
                                             th:value="${items.id}">
                                     </option>
                                 </select>
                                 <label class="form-label">Kiểu thuê</label>
-                            </div>
-
-                            <div class="mb-4">
-
-                                <select id="facilityType" th:field="*{facilityType}" class="select">
-                                    <option th:each="items:${facilityTypeList}" th:text="${items.name}"
-                                            th:value="${items.id}">
-                                    </option>
-                                </select>
-                                <label class="form-label">Loại dịch vụ</label>
                             </div>
 
                             <button type="submit" class="btn btn-info btn-lg mb-1">Xác nhận</button>
@@ -97,53 +99,39 @@
 </section>
 </body>
 <script>
-    $(document).ready(function () {
-        idFacilityType();
-
-    })
-
-    function idFacilityType() {
-        let idFacilityType = $('#facilityType').val();
-        if (idFacilityType === '1') {
-            $('#facilityFree').hide();
-            $('#poolArea').show();
-            $('#numberFloor').show();
-        }
-        if (idFacilityType === '2') {
-            $('#facilityFree').hide();
-            $('#poolArea').hide();
-            $('#numberFloor').show();
-        }
-        if (idFacilityType === '3') {
-            $('#poolArea').hide();
-            $('#standardRoom').hide();
-            $('#description').hide();
-            $('#numberFloor').hide();
-            $('#facilityFree').show();
+    function selectFacilityType() {
+        let x = document.getElementById("facilityType").value
+        debugger
+        switch (x) {
+            case "1":
+                document.getElementById("facilityFree").style.display = "none";
+                document.getElementById("standardRoom").style.display = "block";
+                document.getElementById("description").style.display = "block";
+                document.getElementById("numberFloor").style.display = "block";
+                document.getElementById("poolArea").style.display = "block";
+                break;
+            case "2":
+                document.getElementById("poolArea").style.display = "none";
+                document.getElementById("facilityFree").style.display = "none";
+                document.getElementById("standardRoom").style.display = "block";
+                document.getElementById("description").style.display = "block";
+                document.getElementById("numberFloor").style.display = "block";
+                break;
+            case "3":
+                document.getElementById("standardRoom").style.display = "none";
+                document.getElementById("description").style.display = "none";
+                document.getElementById("numberFloor").style.display = "none";
+                document.getElementById("poolArea").style.display = "none";
+                document.getElementById("facilityFree").style.display = "block";
+                break;
+            default:
+                document.getElementById("standardRoom").style.display = "block";
+                document.getElementById("description").style.display = "block";
+                document.getElementById("numberFloor").style.display = "block";
+                document.getElementById("poolArea").style.display = "block";
+                document.getElementById("facilityFree").style.display = "block";
+                break;
         }
     }
-    $('#facilityFree').hide();
-    $('#poolArea').show();
-    $('#numberFloor').show();
-
-    $('#facilityType').change(function () {
-        if ($(this).val() === '1') {
-            $('#facilityFree').hide();
-            $('#poolArea').show();
-            $('#numberFloor').show();
-        }
-        if ($(this).val() === '2') {
-            $('#facilityFree').hide();
-            $('#poolArea').hide();
-            $('#numberFloor').show();
-        }
-        if ($(this).val() === '3') {
-            $('#poolArea').hide();
-            $('#standardRoom').hide();
-            $('#description').hide();
-            $('#numberFloor').hide();
-            $('#facilityFree').show();
-        }
-    });
 </script>
 </html>
