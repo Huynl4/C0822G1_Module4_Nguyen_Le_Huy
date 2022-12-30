@@ -7,73 +7,48 @@
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
-<div class="container-fluid sticky-top" style="padding: 0">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <a class="btn btn-primary" th:href="@{/}" role="button">Home</a>
-                    <div>
-                        <a class="btn btn-primary" th:href="@{/employee}" a role="button">Employee</a>
-                    </div>
-                    <div>
-                        <a class="btn btn-primary" th:href="@{/customer}" role="button">Customer</a>
-                    </div>
-                    <div>
-                        <a class="btn btn-primary" th:href="@{/facility}" role="button">Facility</a>
-                    </div>
-                    <div>
-                        <a class="btn btn-primary" th:href="@{/contract}" role="button">Contract</a>
-                    </div>
-                </ul>
-                <form class="d-flex" style="text-align: center">
-                    <input style="width: 300px" class="form-control me-2" type="search" placeholder="Search disable"
-                           aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
-        </div>
-    </nav>
-</div>
-<div style="text-align: center">
-    <button type="button" class="btn btn-outline-primary
-                    col-sm-1 ms-auto mb-4"
+<h1 style="text-align: center;background-color: indianred">CONTRACT</h1>
+
+<a th:href="@{/}" class="btn btn-outline-warning">Trang chủ</a>
+<div>
+    <button type="button" class="btn btn-outline-danger
+                    col-sm-1 mb-2"
             data-bs-toggle="modal"
-            data-bs-target="#modalAdd">Add new
+            data-bs-target="#modalAdd">Thêm mới
     </button>
 </div>
-<table class="table">
-    <tr class="table-dark">
+<table class="table table-striped">
+    <tr>
         <th>STT</th>
-        <th>Name Facility</th>
-        <th>Customer</th>
-        <th>Date Start</th>
-        <th>Date End</th>
-        <th>Deposit</th>
-        <th>Total Money</th>
-        <th colspan="2">Attach Facility</th>
+        <th>Tên dịch vụ</th>
+        <th>Tên khách hàng</th>
+        <th>Ngày bắt đầu</th>
+        <th>Ngày kết thúc</th>
+        <th>Tiền đặt cọc</th>
+        <th>Tổng tiền</th>
+        <th colspan="2">Cơ sở đính kèm</th>
     </tr>
-    <th:block th:each="con, stt : ${contractDtoPage}">
+    <th:block th:each="contract, stt : ${contractDtoPage}">
         <tr class="table-view">
             <td th:text="${stt.count}+${contractDtoPage.number}*${contractDtoPage.size}"></td>
-            <td th:text="${con.nameFacility}"></td>
-            <td th:text="${con.nameCustomer}"></td>
-            <td th:text="${con.startDate}"></td>
-            <td th:text="${con.endDate}"></td>
-            <td th:text="${con.deposit}"></td>
-            <td th:text="${con.totalValue}"></td>
+            <td th:text="${contract.nameFacility}"></td>
+            <td th:text="${contract.nameCustomer}"></td>
+            <td th:text="${contract.startDate}"></td>
+            <td th:text="${contract.endDate}"></td>
+            <td th:text="${contract.deposit}"></td>
+            <td th:text="${contract.totalValue}"></td>
             <td>
                 <button th:onclick="|idContractDetail('__${con.getId()}__')|"
-                        class="btn btn-outline-primary my-2 my-sm-0" type="button" data-bs-toggle="modal"
+                        class="btn btn-warning my-2 my-sm-0" type="button" data-bs-toggle="modal"
                         data-bs-target="#modalAdd2">
                     <span style="color: black">+</span>
                 </button>
             </td>
             <td>
-                <button class="btn btn-outline-primary my-2 my-sm-0 "
-                        th:attr="onclick=|showAttachDetail('${con.getId()}')|" data-bs-toggle="modal"
+                <button class="btn btn-secondary my-2 my-sm-0 "
+                        th:attr="onclick=|showAttachDetail('${contract.getId()}')|" data-bs-toggle="modal"
                         data-bs-target="#showAttachDetail">
-                    <span class="text-light m-auto" style="color: black">Attach Facility List</span>
+                    <span class="text-light m-auto" style="color: black">Danh sách dịch vụ đính kèm</span>
                 </button>
             </td>
 
@@ -123,7 +98,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5">Add new Contract?</h1>
+                <h1 class="modal-title fs-5">Thêm hợp đồng?</h1>
                 <button type="button" class="btn-close"
                         data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -200,7 +175,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5">Add new Attach Facility?</h1>
+                <h1 class="modal-title fs-5">Thêm dịch vụ đính kèm?</h1>
                 <button type="button" class="btn-close"
                         data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -257,7 +232,7 @@
     <div class="modal-dialog">
         <div class="modal-content modalCSS">
             <div class="modal-header">
-                <h4 class="modal-title text-center" id="exampleModalLabel2">List attach facility</h4>
+                <h4 class="modal-title text-center" id="exampleModalLabel2">Danh sách dịch vụ đính kèm</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

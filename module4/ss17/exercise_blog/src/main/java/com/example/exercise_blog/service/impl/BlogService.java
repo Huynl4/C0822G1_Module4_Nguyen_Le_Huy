@@ -44,4 +44,9 @@ public class BlogService implements IBlogService {
     public void remove(Long id) {
         iBlogRepository.deleteById(id);
     }
+
+    @Override
+    public List<Blog> searchTitle(String title) {
+        return iBlogRepository.searchTitle(title);
+    }
 }

@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/blogs")
+@CrossOrigin("*")
 public class BlogRestController {
     @Autowired
     private IBlogService blogService;
@@ -19,9 +20,18 @@ public class BlogRestController {
     public ResponseEntity<List<Blog>> getList() {
         List<Blog> blogList = blogService.findAll();
         if (blogList.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(blogList, HttpStatus.OK);
+    }
+
+    @GetMapping("/blog/{id}")
+    public ResponseEntity<Blog> findByIDBlog(@PathVariable("id") Long id) {
+        Blog blog = blogService.findById(id);
+        if (blog == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(blog, HttpStatus.OK);
     }
 
     @PostMapping("")
@@ -41,5 +51,10 @@ public class BlogRestController {
         Blog blog = blogService.findById(id);
         blogService.save(blog);
         return new ResponseEntity<>(blog, HttpStatus.OK);
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<Blog>> blogSearch(@RequestParam String title) {
+        return new ResponseEntity<>(blogService.searchTitle(title), HttpStatus.OK);
     }
 }

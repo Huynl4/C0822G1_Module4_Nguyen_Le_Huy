@@ -7,7 +7,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+
 public interface IBlogRepository extends JpaRepository<Blog, Long> {
     @Query(value = "select * from blog  where blog.title like concat('%', :title,'%') ", nativeQuery = true)
     Page<Blog> findAllByTitleContaining(Pageable pageable, @Param("title") String title);
+
+    @Query(value = "select * from blog  where blog.title like concat('%', :title,'%') ", nativeQuery = true)
+    List<Blog> searchTitle(String title);
 }
