@@ -3,10 +3,11 @@ package com.example.casestudy.dto;
 public interface AttachFacilityDto {
     Long getId();
 
-    String getFacilityName();
+    String getAttachName();
 
     String getTotalQuantity();
     String getCost();
 
     String getTotalMoney();
+
 }
