@@ -1,7 +1,6 @@
 package com.example.casestudy.service;
 
-import com.example.casestudy.dto.IContractDetailDto;
-import com.example.casestudy.model.contract.Contract;
+import com.example.casestudy.dto.ContractDto;
 import com.example.casestudy.model.contract.ContractDetail;
 
 import java.util.List;
@@ -11,5 +10,5 @@ public interface IContractDetailService {
 
     void save(ContractDetail contractDetail);
 
-    List<IContractDetailDto> showAll(Long id);
+    List<ContractDto> showAll(Long id);
 }

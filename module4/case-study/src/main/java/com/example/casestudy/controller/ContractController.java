@@ -63,7 +63,7 @@ public class ContractController {
     public String showAttachFacility(@PathVariable Long id, Model model) {
         model.addAttribute("contractDetails", contractDetailService.showAll(id));
 
-        return "contract/attachFacilityList";
+        return "redirect:/contract";
     }
 
 }

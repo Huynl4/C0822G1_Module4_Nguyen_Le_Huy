@@ -10,6 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
             crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
 </head>
 <body>
 <h1 style="text-align: center;background-color: indianred">CONTRACT</h1>
@@ -36,14 +37,14 @@
     <th:block th:each="contract, stt : ${contractDtoPage}">
         <tr class="table-view">
             <td th:text="${stt.count}+${contractDtoPage.number}*${contractDtoPage.size}"></td>
-            <td th:text="${contract.nameFacility}"></td>
-            <td th:text="${contract.nameCustomer}"></td>
-            <td th:text="${contract.startDate}"></td>
-            <td th:text="${contract.endDate}"></td>
-            <td th:text="${contract.deposit}"></td>
-            <td th:text="${contract.totalValue}"></td>
+            <td th:text="${contract.getNameFacility()}"></td>
+            <td th:text="${contract.getNameCustomer()}"></td>
+            <td th:text="${contract.getStartDate()}"></td>
+            <td th:text="${contract.getEndDate()}"></td>
+            <td th:text="${contract.getDeposit()}"></td>
+            <td th:text="${contract.getTotalValue()}"></td>
             <td>
-                <button th:onclick="|idContractDetail('__${con.getId()}__')|"
+                <button th:onclick="|idContractDetail(${contract.getId()})|"
                         class="btn btn-warning my-2 my-sm-0" type="button" data-bs-toggle="modal"
                         data-bs-target="#modalAdd2">
                     <span style="color: black">+</span>
@@ -60,6 +61,8 @@
         </tr>
     </th:block>
 </table>
+
+<!--phân trang-->
 <div>
     <nav aria-label="..." class="justify-content-center d-flex">
         <ul class="pagination">
@@ -97,6 +100,8 @@
         </ul>
     </nav>
 </div>
+
+<!--modal thêm mới hợp đồng-->
 <div class="modal fade" id="modalAdd" tabindex="-1"
      aria-labelledby="exampleModalLabel" aria-hidden="true"
      data-bs-backdrop="static">
@@ -163,17 +168,25 @@
                             </select>
                         </div>
                     </div>
+                    <div class="mb-4">
+                        <lable>Dịch vụ đính kèm</lable>
+                        <button class="btn btn-warning my-2 my-sm-0" type="button" data-bs-toggle="modal"
+                                data-bs-target="#modalAdd2">+
+                        </button>
+                    </div>
                 </div>
                 <div class="mb-4 text-center">
                     <button id="save"
                             class="btn btn-info btn-outline-success btn-sm border border-2 border-success text-dark">
-                        Save <i class="fa-solid fa-floppy-disk"></i>
+                        Tạo hợp đồng <i class="fa-solid fa-floppy-disk"></i>
                     </button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+
+<!--modal thêm dịch vụ đi kèm-->
 <div class="modal fade" id="modalAdd2" tabindex="-1"
      aria-labelledby="exampleModalLabel" aria-hidden="true"
      data-bs-backdrop="static">
@@ -233,6 +246,8 @@
         </div>
     </div>
 </div>
+
+
 <div class="modal fade" id="showAttachDetail" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content modalCSS">
@@ -241,11 +256,8 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <table id="showSlow"></table>
+                <table id="showAttach"></table>
 
-                <div class="h5 text-danger text-center" id="note">
-
-                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -254,7 +266,12 @@
     </div>
 </div>
 <input hidden id="mess" th:value="${mess}">
-<script src="/jquery-3.6.1.min.js"></script>
+<!--<script src="/jquery-3.6.1.min.js"></script>-->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous">
+</script>
 <script>
     $(document).ready(function () {
         if ($("#mess").val() == 1) {
@@ -263,36 +280,64 @@
     })
 </script>
 <script>
+    // function showAttachDetail(id) {
+    //     $.ajax({
+    //         url: "http://localhost:8080/api/contracts/v1/" + id,
+    //         type: "GET",
+    //         contentType: "application/json; charset =utf-8",
+    //         dataType: "json",
+    //         success: function (data) {
+    //             console.log(data)
+    //             let myTableContractDetail = "";
+    //             for (let i = 0; i < data.length; i++) {
+    //                 myTableContractDetail +=
+    //                     `<tr>
+    //                            <th>${i + 1}</th>
+    //                            <td>${data[i].facilityName}</td>
+    //                             <td>${data[i].cost}</td>
+    //                            <td>${data[i].totalQuantity}</td>
+    //                             <td>${data[i].totalMoney}</td>
+    //                      </tr>
+    //                          `
+    //             }
+    //             $('#showAttach').append(myTableContractDetail)
+    //             // $("#myTableContractDetail").empty();
+    //             // $("#myTableContractDetail").append(myTableContractDetail);
+    //         }
+    //     });
+    // }
+
     function showAttachDetail(id) {
-        $("#showSlow").empty();
-        $("#note").show();
+        // $("#showAttach").empty();
+        // $("#note").show();
         $.ajax({
-            url: "http://localhost:8080/api/contract/v1/" + id,
+            url: "http://localhost:8080/api/contracts/v1/" + id,
             type: "GET",
             dataType: "json",
             success: function (data) {
                 if (data.length > 0) {
-                    $("#note").hide();
+                    // $("#note").hide();
                     let tr = [];
 
                     tr.push("<tr>");
                     tr.push("<th>" + "Tên dịch vụ đi kèm" + "</th>");
-                    tr.push("<th class='px-5'>" + "Đơn vị" + "</th>");
+                    // tr.push("<th class='px-5'>" + "Đơn vị" + "</th>");
                     tr.push("<th class='text-center'>" + "Số lượng" + "</th>");
-                    // tr.push("<th class='text-center'>" + "Tổng tiền dịch vụ đi kèm" + "</th>");
+                    tr.push("<th class='text-center'>" + "Giá tiền" + "</th>");
+                    tr.push("<th class='text-center'>" + "Tổng tiền" + "</th>");
                     tr.push("</tr>");
 
                     for (let i = 0; i < data.length; i++) {
                         tr.push("<tr>");
-                        tr.push("<td class='h6'>" + data[i].nameDto + "</td>");
-                        tr.push("<td class='px-5'>" + data[i].unitDto + "</td>");
-                        tr.push("<td class='text-center'>" + data[i].quantityDto + "</td>");
-                        // tr.push("<td class='text-primary text-center'>" + data[i].totalDto + "</td>");
+                        tr.push("<td class='h6'>" + data[i].facilityName + "</td>");
+                        tr.push("<td class='px-5'>" + data[i].totalQuantity+ "</td>");
+                        tr.push("<td class='text-center'>" + data[i].cost + "</td>");
+                        tr.push("<td class='text-center'>" + data[i].totalMoney + "</td>");
                         tr.push("</tr>");
                     }
-                    $("#showSlow").append(tr.join(""));
-                    $("#showSlow").hide();
-                    $("#showSlow").fadeIn(4000);
+                    $("#showAttach").html(tr.join(""));
+                    // $("#showAttach").hide();
+                    // $("#showAttach").fadeIn(4000);
                 }
             }
         })
@@ -303,7 +348,6 @@
         crossorigin="anonymous"></script>
 <script th:inline="javascript">
     function idContractDetail(id) {
-        debugger
         document.getElementById("idInput").value = id;
     }
 

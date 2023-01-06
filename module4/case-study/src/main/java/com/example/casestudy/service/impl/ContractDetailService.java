@@ -1,6 +1,6 @@
 package com.example.casestudy.service.impl;
 
-import com.example.casestudy.dto.IContractDetailDto;
+import com.example.casestudy.dto.ContractDto;
 import com.example.casestudy.model.contract.ContractDetail;
 import com.example.casestudy.repository.contract.IContractDetailRepository;
 import com.example.casestudy.service.IContractDetailService;
@@ -24,7 +24,7 @@ public class ContractDetailService implements IContractDetailService {
     }
 
     @Override
-    public List<IContractDetailDto> showAll(Long id) {
+    public List<ContractDto> showAll(Long id) {
         return contractDetailRepository.showAll(id);
     }
 }
