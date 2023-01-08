@@ -14,8 +14,11 @@ public class Customer {
     private String birthday;
     private int gender;
     private String idCard;
+    @Column(unique = true)
     private String phoneNumber;
+    @Column(unique = true)
     private String email;
+    @Column(unique = true)
     private String address;
     private boolean flagDelete;
 
