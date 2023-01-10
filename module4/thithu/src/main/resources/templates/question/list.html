@@ -16,7 +16,7 @@
 <a th:href="@{/}" class="btn btn-info">Trang chủ</a>
 
 <div th:if="${mess}">
-    <p style="color: cornflowerblue; font-weight: bold" th:text="${mess}"></p>
+    <p style="color: red; font-weight: bold" th:text="${mess}"></p>
 </div>
 <nav class="navbar bg-light">
     <div class="container-fluid">
@@ -58,9 +58,6 @@
                         data-bs-target="#showAllQuestion">
                     <span class="text-light m-auto" style="color: black">Xem</span>
                 </button>
-<!--                <button th:attr="onclick=|showAllQuestion('${question.getId()}')|" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">-->
-<!--                    Launch demo modal-->
-<!--                </button>-->
             </td>
             <td>
                 <a th:attr="onclick=|infoDelete('${question.id}','${question.title}')|"
@@ -170,7 +167,7 @@
 <script>
     function showAllQuestion(id) {
         $.ajax({
-            url: "/api/questions/v1/" + id,
+            url: "http://localhost:8080/api/questions/v1/" + id,
             type: "GET",
             dataType: "json",
             success: function (data) {
