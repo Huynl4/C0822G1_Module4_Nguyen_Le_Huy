@@ -5,16 +5,40 @@ import com.example.casestudy.model.facility.RentType;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+
 public class FacilityDto implements Validator {
     private Long id;
+    @NotBlank(message = "không được để trông")
     private String name;
+
+    @NotBlank(message = "không được để trông")
+    @Min(value = 1, message = "Diện tích phải là một số dương")
     private int area;
+
+    @NotBlank(message = "không được để trông")
+    @Min(value = 1, message = "Gía phải là một số dương")
     private double cost;
+
+    @NotBlank(message = "không được để trông")
+    @Min(value = 1, message = "Số người tối đa phải là một số dương")
     private int maxPeople;
+
+    @NotBlank(message = "không được để trông")
     private String standardRoom;
+
+    @NotBlank(message = "không được để trông")
     private String description;
+
+    @NotBlank(message = "không được để trông")
+    @Min(value = 1, message = "Diện tích bể bơi phải là một số dương")
     private double poolArea;
+
+    @NotBlank(message = "không được để trông")
+    @Min(value = 1, message = "Số tầng phải là một số dương")
     private int numberFloor;
+
     private String facilityFree;
     private RentType rentType;
     private FacilityType facilityType;
