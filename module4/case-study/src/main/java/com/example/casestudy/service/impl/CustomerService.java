@@ -1,5 +1,6 @@
 package com.example.casestudy.service.impl;
 
+//import com.example.casestudy.model.customer.Customer;
 import com.example.casestudy.model.customer.Customer;
 import com.example.casestudy.repository.customer.ICustomerRepository;
 import com.example.casestudy.service.ICustomerService;
@@ -19,6 +20,7 @@ public class CustomerService implements ICustomerService {
     public List<Customer> findAll() {
         return iCustomerRepository.findAll();
     }
+
 
     @Override
     public void save(Customer customer) {
