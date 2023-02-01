@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+          crossorigin="anonymous"></script>
+</head>
+<body>
+
+<section class="h-100 h-custom" style="background-color: #8fc4b7;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-8 col-xl-6">
+        <div class="card rounded-3">
+          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp"
+               class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+               alt="Sample photo">
+          <div class="card-body p-4 p-md-5">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Chỉnh sửa phim</h3>
+
+            <form th:action="@{/chieu/edit}" th:object="${chieuDto}" method="post">
+              <input th:type="hidden" th:field="*{id}">
+              <div class="form-outline mb-4">
+                <input type="text" th:field="*{code}" class="form-control"/>
+                <td th:if="${#fields.hasErrors('code')}" th:errors="*{code}">Name Error</td>
+                <label class="form-label">mã chiếu phim</label>
+              </div>
+
+              <div class="form-outline mb-4">
+                <input type="date" th:field="*{date}" class="form-control"/>
+                <td th:if="${#fields.hasErrors('date')}" th:errors="*{date}">Name Error</td>
+                <label class="form-label">Ngày Chiếu</label>
+              </div>
+
+              <div class="form-outline mb-4">
+                <input type="text" th:field="*{amount}" class="form-control"/>
+                <td th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}">Name Error</td>
+
+                <label class="form-label">số lượng vé</label>
+              </div>
+              <div class="mb-4">
+
+                <select th:field="*{phim}" class="select">
+                  <option th:each="items:${phimList}" th:text="${items.name}"
+                          th:value="${items.id}">
+                  </option>
+                </select>
+                <label class="form-label">phim</label>
+              </div>
+
+              <button type="submit" class="btn btn-info btn-lg mb-1">Xác nhận</button>
+            </form>
+            <p style="margin-left: 20%">
+              <a th:href="@{/chieu}" class="btn btn-danger">Danh sách chiếu</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

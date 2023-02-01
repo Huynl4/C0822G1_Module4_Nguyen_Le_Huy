@@ -29,7 +29,7 @@ public class UserController {
 
     @GetMapping("/create")
     public String showCreate(Model model) {
-        model.addAttribute("userDto",  new UserDto());
+        model.addAttribute("userDto", new UserDto());
         return "user/create";
     }
 
