@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+            crossorigin="anonymous"></script>
 </head>
 <body>
 <!--phần đầu-->
@@ -85,95 +88,86 @@
             aria-controls="offcanvasScrolling" style="font-size: 30px">FACILITY
     </button>
 </div>
-<!--Phần card-->
+<section class="h-100 h-custom" style="background-color: #8fc4b7;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-8 col-xl-6">
+                <div class="card rounded-3">
+                    <img src="https://www.chapter3d.com/wp-content/uploads/2020/06/anh-phong-canh-herman-damar.jpg"
+                         class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+                         alt="Sample photo">
+                    <div class="card-body p-4 p-md-5">
+                        <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Thêm mới dịch vụ</h3>
+                            <input type="hidden">
+                            <div class="mb-4">
+                                <select id="facilityType"class="select"
+                                        onchange="selectFacilityType()">
+                                    <option value="1">Villa</option>
+                                    <option value="2">House</option>
+                                    <option value="3">Room</option>
+                                </select>
+                                <label class="form-label">Loại dịch vụ</label>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <input type="text" class="form-control"/>
+                                <label class="form-label">Tên dịch vụ</label>
+                            </div>
 
-<div class="card-group">
-    <div class="card">
-        <img src="https://cdn.onekindesign.com/wp-content/uploads/2022/01/White-Brick-Home-Amy-Storm-Company-01-1-Kindesign.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">House</h5>
-            <p class="card-text">Diện tích: 300m2</p>
-        </div>
-        <div class="card-footer">
-            <small class="text-muted">New</small>
-        </div>
-    </div>
-    <div class="card">
-        <img src="https://cdn.indesignlive.com/wp-content/uploads/1.smallbedsfeat-1170x780.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Room</h5>
-            <p class="card-text">Diện tích: 100m2</p>
-        </div>
-        <div class="card-footer">
-            <small class="text-muted">New</small>
-        </div>
-    </div>
-    <div class="card">
-        <img src="https://cdn.cet.edu.vn/wp-content/uploads/2019/02/villa-khong-gian-sang-trong.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Villa</h5>
-            <p class="card-text">Diện tích: 200m2</p>
-        </div>
-        <div class="card-footer">
-            <small class="text-muted">New</small>
-        </div>
-    </div>
-</div>
+                            <div class="form-outline mb-4">
+                                <input type="text" class="form-control"/>
+                                <label class="form-label">Diện tích</label>
+                            </div>
 
-<div class="card-group">
-    <div class="card">
-        <img src="https://images.adsttc.com/media/images/5ecd/d4ac/b357/65c6/7300/009d/large_jpg/02C.jpg?1590547607" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">House</h5>
-            <p class="card-text">Diện tích: 300m2</p>
-        </div>
-        <div class="card-footer">
-            <small class="text-muted">New</small>
-        </div>
-    </div>
-    <div class="card">
-        <img src="https://media.houseandgarden.co.uk/photos/637637c2e4eb0449205a261c/3:2/w_1998,h_1332,c_limit/Shot-04_068_RT.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Room</h5>
-            <p class="card-text">Diện tích: 100m2</p>
-        </div>
-        <div class="card-footer">
-            <small class="text-muted">New</small>
-        </div>
-    </div>
-    <div class="card">
-        <img src="https://q-xx.bstatic.com/xdata/images/hotel/max1024x768/314234927.jpg?k=e8d0ff333645000b3345bf3c924ebdba3547cd73c362881b16049f5fe5d19701&o=" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Villa</h5>
-            <p class="card-text">Diện tích: 200m2</p>
-        </div>
-        <div class="card-footer">
-            <small class="text-muted">New</small>
-        </div>
-    </div>
-</div>
+                            <div class="form-outline mb-4">
+                                <input type="text"  class="form-control"/>
+                                <label class="form-label">Giá</label>
+                            </div>
 
-<!--/*phần giữa*/-->
-<div style="height: 100%" class="row">
-    <button class="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"
-            aria-controls="offcanvasScrolling">FURAMA RESORT DA NANG
-    </button>
+                            <div class="form-outline mb-4" id="standardRoom">
+                                <input type="text"  class="form-control"/>
+                                <label class="form-label">Loại phòng</label>
+                            </div>
 
-    <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
-         id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasScrollingLabel"
-                style="color:black;font-size: 30px;margin-left: 30px">Việt Nam</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="header">
-            <img src="https://openclipart.org/download/290801/vietnam-map.svg" style="width: 380px">
-        </div>
-        <div class="chutieude" style="font-size: 35px; background-color: lavender">
-            <marquee scrollamount=15>꧁༺WELCOME TO FURAMA RESORT༻꧂</marquee>
+                            <div class="form-outline mb-4" id="description">
+                                <input type="text"  class="form-control"/>
+                                <label class="form-label">Mô tả</label>
+                            </div>
+
+                            <div class="form-outline mb-4" id="poolArea">
+                                <input type="text"  class="form-control"/>
+                                <label class="form-label">Diện tích hồ bơi</label>
+                            </div>
+
+                            <div class="form-outline mb-4" id="numberFloor">
+                                <input type="text"  class="form-control"/>
+                                <label class="form-label">Số tầng</label>
+                            </div>
+
+                            <div class="form-outline mb-4" id="facilityFree">
+                                <input type="text"  class="form-control"/>
+                                <label class="form-label">Dịch vụ miễn kèm theo</label>
+                            </div>
+
+                            <div class="mb-4">
+                                <select  class="select">
+                                    <option value="1">Ngày</option>
+                                    <option value="2">Tháng</option>
+                                    <option value="3">Năm</option>
+                                    <option value="4">Giờ</option>
+                                </select>
+                                <label class="form-label">Kiểu thuê</label>
+                            </div>
+
+                            <button type="submit" class="btn btn-info btn-lg mb-1">Xác nhận</button>
+                        <p style="margin-left: 20%">
+                            <a class="btn btn-danger">Danh sách dịch vụ</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+</section>
 <!--    phần footer-->
 <div style="margin-top: 30px " ; class="footer">
     <nav class="navbar navbar-expand-lg bg-light">
@@ -226,9 +220,40 @@
 </div>
 </div>
 </body>
-
-<!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-        crossorigin="anonymous"></script>
+<script>
+    function selectFacilityType() {
+        let x = document.getElementById("facilityType").value
+        debugger
+        switch (x) {
+            case "1":
+                document.getElementById("facilityFree").style.display = "none";
+                document.getElementById("standardRoom").style.display = "block";
+                document.getElementById("description").style.display = "block";
+                document.getElementById("numberFloor").style.display = "block";
+                document.getElementById("poolArea").style.display = "block";
+                break;
+            case "2":
+                document.getElementById("poolArea").style.display = "none";
+                document.getElementById("facilityFree").style.display = "none";
+                document.getElementById("standardRoom").style.display = "block";
+                document.getElementById("description").style.display = "block";
+                document.getElementById("numberFloor").style.display = "block";
+                break;
+            case "3":
+                document.getElementById("standardRoom").style.display = "none";
+                document.getElementById("description").style.display = "none";
+                document.getElementById("numberFloor").style.display = "none";
+                document.getElementById("poolArea").style.display = "none";
+                document.getElementById("facilityFree").style.display = "block";
+                break;
+            default:
+                document.getElementById("standardRoom").style.display = "block";
+                document.getElementById("description").style.display = "block";
+                document.getElementById("numberFloor").style.display = "block";
+                document.getElementById("poolArea").style.display = "block";
+                document.getElementById("facilityFree").style.display = "block";
+                break;
+        }
+    }
+</script>
 </html>
