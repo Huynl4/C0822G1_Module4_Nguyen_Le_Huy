@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+<!--phần đầu-->
+<div class=" container-fluid" style="width: 100%">
+    <div>
+        <nav class="navbar navbar-expand-lg" style="padding: 0">
+            <div class="container-fluid" style="background-color:white">
+                <div class="col-md-3">
+                    <img src="http://www.google.com/logos/doodles/2015/googles-new-logo-5078286822539264.3-hp2x.gif"
+                         style="width: 400px;height: 200px">
+                    <a class="navbar-brand" href="#"></a>
+                </div>
+                <div class="col-md-3">
+                    <img src="https://www.furama.com/images/LOGOFurama_4C_Normal.png"
+                         style="width: 400px; height:100px">
+                </div>
+                <div class="col-md-3">
+                    <p>
+                        <img src="https://www.blugraphic.com/wp-content/uploads/2016/05/Instagram-New-Logo.jpg"
+                             height="40px" width="60px">
+                        Huynl4
+                    </p>
+
+                    <p>
+                        <img src="https://media.istockphoto.com/vectors/telephone-icon-logo-vector-id1279896450"
+                             height="40px" width="40px">
+                        (+84)898 889 889
+                    </p>
+                    <p>
+                        <img src="https://image.shutterstock.com/image-vector/icon-letter-vector-illustration-260nw-247065628.jpg"
+                             height="40px" width="40px">
+                        nguyenlehuy1504@gmai.com
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <nav class="navbar navbar-expand-lg bg-ligh">
+            <div class="container-fluid">
+                <a class="navbar-brand"
+                   href="https://codegym.vn/tai-sao-nen-chon-codegym/?gclid=Cj0KCQiAkMGcBhCSARIsAIW6d0Dhm4H-7oz5gFZq8Ugv7nRQ2QPWcRWoG-vg-tqA4hU5A-sPms8s3loaAtBLEALw_wcB">CodeGym</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page"
+                               href="http://localhost:63342/demo/demo.main/templates/home.html?_ijt=psfqeuht5o3s4hbg6t6p778ek9#">Home</a>
+                        </li>
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                               aria-expanded="false">
+                                More
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="@{/customer}">Customer</a></li>
+                                <li><a class="dropdown-item" href="#">Employee</a></li>
+                                <li><a class="dropdown-item" href="@{/facility}">Facility</a></li>
+                                <li><a class="dropdown-item" href="@{/contract}">Contract</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                    <a class="auth-modal-toggle btn btn-info ms-2 me-1" data-auth-modal-tab="sign-in" style="">Login</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<!--Phần card-->
+<div style="height: 100%" class="row">
+    <button class="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"
+            aria-controls="offcanvasScrolling" style="font-size: 30px">FACILITY
+    </button>
+</div>
+
+<div class="card-group">
+    <div class="card">
+        <img src="https://cdn.onekindesign.com/wp-content/uploads/2022/01/White-Brick-Home-Amy-Storm-Company-01-1-Kindesign.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">House</h5>
+            <p class="card-text">Diện tích: 300m2</p>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">New</small>
+        </div>
+    </div>
+    <div class="card">
+        <img src="https://cdn.indesignlive.com/wp-content/uploads/1.smallbedsfeat-1170x780.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Room</h5>
+            <p class="card-text">Diện tích: 100m2</p>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">New</small>
+        </div>
+    </div>
+    <div class="card">
+        <img src="https://cdn.cet.edu.vn/wp-content/uploads/2019/02/villa-khong-gian-sang-trong.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Villa</h5>
+            <p class="card-text">Diện tích: 200m2</p>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">New</small>
+        </div>
+    </div>
+</div>
+
+<div class="card-group">
+    <div class="card">
+        <img src="https://images.adsttc.com/media/images/5ecd/d4ac/b357/65c6/7300/009d/large_jpg/02C.jpg?1590547607" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">House</h5>
+            <p class="card-text">Diện tích: 300m2</p>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">New</small>
+        </div>
+    </div>
+    <div class="card">
+        <img src="https://media.houseandgarden.co.uk/photos/637637c2e4eb0449205a261c/3:2/w_1998,h_1332,c_limit/Shot-04_068_RT.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Room</h5>
+            <p class="card-text">Diện tích: 100m2</p>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">New</small>
+        </div>
+    </div>
+    <div class="card">
+        <img src="https://q-xx.bstatic.com/xdata/images/hotel/max1024x768/314234927.jpg?k=e8d0ff333645000b3345bf3c924ebdba3547cd73c362881b16049f5fe5d19701&o=" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Villa</h5>
+            <p class="card-text">Diện tích: 200m2</p>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">New</small>
+        </div>
+    </div>
+</div>
+
+<!--/*phần giữa*/-->
+<div style="height: 100%" class="row">
+    <button class="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"
+            aria-controls="offcanvasScrolling">FURAMA RESORT DA NANG
+    </button>
+
+    <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+         id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasScrollingLabel"
+                style="color:black;font-size: 30px;margin-left: 30px">Việt Nam</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="header">
+            <img src="https://openclipart.org/download/290801/vietnam-map.svg" style="width: 380px">
+        </div>
+        <div class="chutieude" style="font-size: 35px; background-color: lavender">
+            <marquee scrollamount=15>꧁༺WELCOME TO FURAMA RESORT༻꧂</marquee>
+        </div>
+    </div>
+</div>
+<!--    phần footer-->
+<div style="margin-top: 30px " ; class="footer">
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="col-md-4" ; style="margin-left: 20px">
+            <h1 style="color: #13653f ; margin-left: 40px">Hướng dẫn di chuyển</h1>
+            <p style="margin-left: 40px">Khu nghỉ dưỡng Furama là cơ sở hàng đầu để khám phá một trong những điểm
+                đến hấp dẫn nhất Châu Á. Chỉ
+                cách Đà Nẵng một quãng lái xe ngắn là bốn Di sản Văn hóa Thế giới được UNESCO công nhận:</p>
+            <form action="https://www.google.com/maps/place/Furama+Resort+Danang/@16.0399456,108.2488794,17z/data=!3m1!4b1!4m8!3m7!1s0x31420fdbc8cc38ef:0x9a6a3e31121225d2!5m2!4m1!1i2!8m2!3d16.0399456!4d108.2510681?hl=vi">
+                <button class="csw-btn-button" type="submit"
+                        style="background-color:#20c997; margin-left: 50px;border-radius: 200px">Xem trên bản đồ
+                </button>
+            </form>
+            <div class="d-flex flex-column mb-3" style="margin-left: 50px">
+                <h4 style="font-weight: 700; color: #13653f;margin-top: 30px">Địa điểm</h4>
+                <div class="p-2">1. Cố đô Huế - 2 tiếng</div>
+                <hr>
+                <div class="p-2">2. Phố cổ Hội An - 30 phút</div>
+                <hr>
+                <div class="p-2">3. Thánh địa Mỹ sơn - 90 phút</div>
+                <hr>
+                <div class="p-2">4. Động Phong Nha - 3 tiếng</div>
+                <hr>
+            </div>
+        </div>
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-4" style="margin-bottom: 50px">
+            <img src="https://png.pngtree.com/png-vector/20191118/ourlarge/pngtree-location-icon-creative-design-template-png-image_1998518.jpg"
+                 width="30" height="30">
+            103 - 105 Vo Nguyen Giap Street, Khue My Ward, Ngu Hanh Son District, Danang City, Vietnam
+            Tel.: 84-236-3847 333/888 * Fax: 84-236-3847 666
+            Email: reservation@furamavietnam.com * www.furamavietnam.com GDS Codes: Amadeus-GD DADFUR,
+            Galileo/Apollo-GD 16236, Sabre-GD 032771, Worldspan- GD DADFU
+            <hr>
+            <div>
+                <img src="https://sugarbeeapple.com/wp-content/uploads/2021/08/facebook-icon-1.png" ;
+                     style="width: 30px;height: 30px">
+                <img src="https://cdn-icons-png.flaticon.com/512/152/152810.png" ;
+                     style="width: 40px; height: 40px">
+                <img src="https://cdn.icon-icons.com/icons2/2973/PNG/512/instagram_logo_icon_186929.png" ;
+                     style="width: 30px;height: 30px">
+            </div>
+            <img src="https://sukumado.com/wp-content/uploads/2021/11/codegym.png"
+                 style="width: 450px;height: 300px; margin-top: 100px">
+            <p style="margin-bottom: 100px; margin-left: 120px">@1998 Furama Resort Đà Nẵng</p>
+        </div>
+    </nav>
+</div>
+</div>
+</div>
+</body>
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+</html>
