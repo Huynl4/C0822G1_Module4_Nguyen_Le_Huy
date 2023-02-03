@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -12,7 +11,6 @@
             crossorigin="anonymous"></script>
 </head>
 <body>
-<!--phần đầu-->
 <div class=" container-fluid" style="width: 100%">
     <div>
         <nav class="navbar navbar-expand-lg" style="padding: 0">
@@ -84,65 +82,84 @@
         </nav>
     </div>
 </div>
-
-<h1 style="text-align: center;background-color: cornflowerblue">KHÁCH HÀNG</h1>
-<a  class="btn btn-info" href="../furama.html">Trang chủ</a>
-
-<div >
-    <p style="color: cornflowerblue; font-weight: bold" ></p>
+<div style="height: 100%" class="row">
+    <button class="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"
+            aria-controls="offcanvasScrolling" style="font-size: 30px">CUSTOMER
+    </button>
 </div>
-<nav class="navbar bg-light">
-    <div class="container-fluid">
-        <form class="d-flex" role="search">
-            <input class="form-control me-1" name="name" type="search" placeholder="Tên" aria-label="Search"
-                   >
-            <input class="form-control me-2" name="email" type="search" placeholder="Email" aria-label="Search"
-                   >
-            <select class="form-control me-1" >
-                <option>VIP</option>
-                <option>NEW</option>
-            </select>
-            <button class="btn btn-outline-success" type="submit">Tìm kiếm</button>
-        </form>
+<p style="margin-left: 40%">
+</p>
+<section class="h-100 h-custom" style="background-color: #8fc4b7;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-8 col-xl-6">
+                <div class="card rounded-3">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp"
+                         class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+                         alt="Sample photo">
+                    <div class="card-body p-4 p-md-5">
+                        <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Thêm mới Khách hàng</h3>
+
+                        <input type="hidden">
+                        <div class="form-outline mb-4">
+                            <input type="text" class="form-control"/>
+                            <label class="form-label">Tên khách hàng</label>
+                        </div>
+                        <div class="form-outline mb-4">
+                            <input type="date" class="form-control"/>
+                            <label class="form-label">Ngày sinh</label>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="form-outline datepicker">
+                                    <input type="radio" value="1">Nam
+                                    <input type="radio" value="0">Nữ
+                                    <br>
+                                    <label class="form-label">Giới tính</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-outline mb-4">
+                            <input type="text" class="form-control"/>
+                            <label class="form-label">Chứng minh thư</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <input type="text" class="form-control"/>
+                            <label class="form-label">Số điện thoại</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <input type="text" class="form-control"/>
+                            <label class="form-label">Email</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <input type="text" class="form-control"/>
+                            <label class="form-label">Địa chỉ</label>
+                        </div>
+                        <div class="mb-4">
+
+                            <select class="select">
+                                <option>VIP</option>
+                                <option>NEW</option>
+                            </select>
+                            <label class="form-label">Loại khách hàng</label>
+                        </div>
+
+                        <button type="submit" class="btn btn-info btn-lg mb-1">Xác nhận</button>
+                        </form>
+                        <p style="margin-left: 20%">
+                            <a class="btn btn-danger" href="../customer/list.html">Danh sách khách hàng</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</nav>
-
-<table class="table table-success table-striped">
-    <tr>
-        <td>Stt</td>
-        <td>Tên</td>
-        <td>Ngày sinh</td>
-        <td>Giới tính</td>
-        <td>CCCD</td>
-        <td>Sđt</td>
-        <td>Email</td>
-        <td>Địa chỉ</td>
-        <td>Loại khách</td>
-        <td colspan="3"></td>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>Nguyễn Lê Huy</td>
-        <td>15/04/1998</td>
-        <td>Nam</td>
-        <td>123456</td>
-        <td>0898206898</td>
-        <td>huynl4@gmail.com</td>
-        <td>Canada</td>
-        <td>VIP</td>
-        <td></td>
-        <td><a class="btn btn-secondary">Sửa</a></td>
-        <td>
-            <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
-                Xóa
-            </a>
-        </td>
-    </tr>
-    </th:block>
-</table>
-
-<a class="btn btn-warning" href="../customer/create.html">Thêm mới khách hàng</a>
-<a class="btn btn-warning">Danh sách khách hàng</a>
+</section>
+</div>
 <!--    phần footer-->
 <div style="margin-top: 30px " ; class="footer">
     <nav class="navbar navbar-expand-lg bg-light">
