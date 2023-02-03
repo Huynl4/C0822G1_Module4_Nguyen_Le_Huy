@@ -85,121 +85,76 @@
 </div>
 <div style="height: 100%" class="row">
     <button class="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"
-            aria-controls="offcanvasScrolling" style="font-size: 30px">FACILITY
+            aria-controls="offcanvasScrolling" style="font-size: 30px">CUSTOMER
     </button>
 </div>
-<!--phần giữa-->
-<section class="h-100 bg-dark">
+<a role="button" class="btn btn-primary" href="list.html">Back list</a>
+<section class="h-100 h-custom" style="background-color: #8fc4b7;">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col">
-                <div class="card card-registration my-4">
-                    <div class="row g-0">
-                        <div class="col-xl-6 d-none d-xl-block">
-                            <img src="https://png.pngtree.com/thumb_back/fw800/background/20190221/ourmid/pngtree-summer-tourism-along-the-way-highway-image_28365.jpg"
-                                 alt="Sample photo" class="img-fluid"
-                                 style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;"/>
-                        </div>
-                        <div class="col-xl-6">
-                            <div class="card-body p-md-5 text-black">
-                                <h3 class="mb-5 text-uppercase">Chỉnh sửa dịch vụ</h3>
-                                    <input type="hidden">
-                                    <div class="row">
-                                        <div class="col-md-6 mb-4">
-                                            <div class="form-outline">
-                                                <input type="text"
-                                                       class="form-control form-control-lg"/>
-                                                <label class="form-label">Tên</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 mb-4">
-                                            <div class="form-outline">
-                                                <input type="text"
-                                                       class="form-control form-control-lg"/>
-                                                <label class="form-label">Diện tích</label>
-                                            </div>
-                                        </div>
-                                    </div>
+            <div class="col-lg-8 col-xl-6">
+                <div class="card rounded-3">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp"
+                         class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+                         alt="Sample photo">
+                    <div class="card-body p-4 p-md-5">
+                        <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Chỉnh sửa Khách hàng</h3>
 
-                                    <div class="row">
-                                        <div class="col-md-6 mb-4">
-                                            <div class="form-outline">
-                                                <input type="text"
-                                                       class="form-control form-control-lg"/>
-                                                <label class="form-label">Giá</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 mb-4">
-                                            <div class="form-outline">
-                                                <input type="text"
-                                                       class="form-control form-control-lg"/>
-                                                <label class="form-label">Số lượng người</label>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-outline mb-4">
-                                        <select  class="select">
-                                            <option>Ngày</option>
-                                            <option>Tháng</option>
-                                            <option>Năm</option>
-                                            <option>Giờ</option>
-
-                                        </select>
-                                        <label class="form-label">Kiểu thuê</label>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-6 mb-4">
-                                            <select  class="select">
-                                                <option>Villa</option>
-                                                <option>House</option>
-                                                <option>Room</option>
-                                            </select>
-                                            <label class="form-label">Loại dịch vụ</label>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-outline mb-4">
-                                        <input type="text" class="form-control form-control-lg"/>
-                                        <label class="form-label">Loại phòng</label>
-                                    </div>
-
-                                    <div class="form-outline mb-4">
-                                        <input type="text"  class="form-control form-control-lg"/>
-                                        <label class="form-label" >Mô tả</label>
-                                    </div>
-
-                                    <div class="form-outline mb-4">
-                                        <input type="text"  class="form-control form-control-lg"/>
-                                        <label class="form-label" >Diện tích hồ bơi</label>
-                                    </div>
-
-                                    <div class="form-outline mb-4">
-                                        <input type="text" class="form-control form-control-lg"/>
-                                        <label class="form-label" >Số tầng</label>
-                                    </div>
-
-                                    <div class="form-outline mb-4">
-                                        <input type="text"  class="form-control form-control-lg"/>
-                                        <label class="form-label" >Dịch vụ miễn phí kèm theo</label>
-                                    </div>
-
-                                    <div class="d-flex justify-content-end pt-3">
-                                        <button type="button" class="btn btn-light btn-lg">Hủy!</button>
-                                        <button type="submit" class="btn btn-warning btn-lg ms-2">Xác nhận</button>
-                                    </div>
-                                    <p style="margin-left: 20%">
-                                        <a class="btn btn-danger">Danh sách dịch vụ</a>
-                                    </p>
-                                </form>
+                            <input type="hidden" >
+                            <div class="form-outline mb-4">
+                                <input type="text"  class="form-control"/>
+                                <label class="form-label">Tên khách hàng</label>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <input type="date"  class="form-control"/>
+                                <label class="form-label">Ngày sinh</label>
                             </div>
 
-                        </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline datepicker">
+                                        <input type="radio"  value="1">Nam
+                                        <input type="radio"  value="0">Nữ
+                                        <br>
+                                        <label class="form-label">Giới tính</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <input type="text" class="form-control"/>
+                                <label class="form-label">Chứng minh thư</label>
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <input type="text"  class="form-control"/>
+                                <label class="form-label">Số điện thoại</label>
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <input type="text"  class="form-control"/>
+                                <label class="form-label">Email</label>
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <input type="text"  class="form-control"/>
+                                <label class="form-label">Địa chỉ</label>
+                            </div>
+                            <div class="mb-4">
+
+                                <select  class="select">
+                                    <option>VIP</option>
+                                    <option>NEW</option>
+                                </select>
+                                <label class="form-label">Loại khách hàng</label>
+                            </div>
+
+                            <button type="submit" class="btn btn-info btn-lg mb-1">Xác nhận</button>
+                        </form>
+                        <p style="margin-left: 20%">
+                            <a class="btn btn-danger">Danh sách khách hàng</a>
+                        </p>
                     </div>
-
                 </div>
-
             </div>
         </div>
     </div>
