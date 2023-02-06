@@ -1,0 +1,80 @@
+<section class="h-100 h-custom" style="background-color: #8fc4b7;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-8 col-xl-6">
+        <div class="card rounded-3">
+          <img src="https://www.chapter3d.com/wp-content/uploads/2020/06/anh-phong-canh-herman-damar.jpg"
+               class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+               alt="Sample photo">
+          <div class="card-body p-4 p-md-5">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Thêm mới dịch vụ</h3>
+            <input type="hidden">
+            <div class="mb-4">
+              <select id="facilityType"class="select"
+                      onchange="selectFacilityType()">
+                <option value="1">Villa</option>
+                <option value="2">House</option>
+                <option value="3">Room</option>
+              </select>
+              <label class="form-label">Loại dịch vụ</label>
+            </div>
+            <div class="form-outline mb-4">
+              <input type="text" class="form-control"/>
+              <label class="form-label">Tên dịch vụ</label>
+            </div>
+
+            <div class="form-outline mb-4">
+              <input type="text" class="form-control"/>
+              <label class="form-label">Diện tích</label>
+            </div>
+
+            <div class="form-outline mb-4">
+              <input type="text"  class="form-control"/>
+              <label class="form-label">Giá</label>
+            </div>
+
+            <div class="form-outline mb-4" id="standardRoom">
+              <input type="text"  class="form-control"/>
+              <label class="form-label">Loại phòng</label>
+            </div>
+
+            <div class="form-outline mb-4" id="description">
+              <input type="text"  class="form-control"/>
+              <label class="form-label">Mô tả</label>
+            </div>
+
+            <div class="form-outline mb-4" id="poolArea">
+              <input type="text"  class="form-control"/>
+              <label class="form-label">Diện tích hồ bơi</label>
+            </div>
+
+            <div class="form-outline mb-4" id="numberFloor">
+              <input type="text"  class="form-control"/>
+              <label class="form-label">Số tầng</label>
+            </div>
+
+            <div class="form-outline mb-4" id="facilityFree">
+              <input type="text"  class="form-control"/>
+              <label class="form-label">Dịch vụ miễn kèm theo</label>
+            </div>
+
+            <div class="mb-4">
+              <select  class="select">
+                <option value="1">Ngày</option>
+                <option value="2">Tháng</option>
+                <option value="3">Năm</option>
+                <option value="4">Giờ</option>
+              </select>
+              <label class="form-label">Kiểu thuê</label>
+            </div>
+
+            <button type="submit" class="btn btn-info btn-lg mb-1">Xác nhận</button>
+            <p style="margin-left: 20%">
+              <a class="btn btn-danger">Danh sách dịch vụ</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

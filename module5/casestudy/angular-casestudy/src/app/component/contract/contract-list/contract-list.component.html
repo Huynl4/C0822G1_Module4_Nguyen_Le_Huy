@@ -1,0 +1,216 @@
+<div>
+  <button type="button" class="btn btn-outline-danger
+                    col-sm-1 mb-2"
+          data-bs-toggle="modal"
+          data-bs-target="#modalAdd">Thêm mới
+  </button>
+</div>
+<table class="table table-striped">
+  <tr>
+    <th>STT</th>
+    <th>Tên dịch vụ</th>
+    <th>Tên khách hàng</th>
+    <th>Ngày bắt đầu</th>
+    <th>Ngày kết thúc</th>
+    <th>Tiền đặt cọc</th>
+    <th>Tổng tiền</th>
+    <th colspan="3">Cơ sở đính kèm</th>
+  </tr>
+  <tr class="table-view">
+    <td >1</td>
+    <td >Villa in Room</td>
+    <td >Bảo HX</td>
+    <td >22/12/2023</td>
+    <td >22/12/2023</td>
+    <td >10.000$</td>
+    <td>50.000$</td>
+    <td></td>
+    <td>
+      <button
+        class="btn btn-warning my-2 my-sm-0" type="button" data-bs-toggle="modal"
+        data-bs-target="#modalAdd2">
+        <span style="color: black">+</span>
+      </button>
+    </td>
+    <td>
+      <button class="btn btn-secondary my-2 my-sm-0 "
+              data-bs-toggle="modal"
+              data-bs-target="#showAttachDetail">
+        <span class="text-light m-auto" style="color: black">Danh sách dịch vụ đính kèm</span>
+      </button>
+    </td>
+
+  </tr>
+</table>
+
+<!--phân trang-->
+<nav aria-label="..." style="margin-left:40%">
+  <ul class="pagination">
+    <li class="page-item disabled">
+      <span class="page-link">Previous</span>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item active" aria-current="page">
+      <span class="page-link">2</span>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
+
+<!--modal thêm mới hợp đồng-->
+<div class="modal fade" id="modalAdd" tabindex="-1"
+     aria-labelledby="exampleModalLabel" aria-hidden="true"
+     data-bs-backdrop="static">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Thêm hợp đồng?</h1>
+        <button type="button" class="btn-close"
+                data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="mb-4">
+          <label for="name">Tên dịch vụ:</label>
+          <div>
+            <select id="name">
+              <option></option>
+              <option></option>
+            </select>
+          </div>
+        </div>
+        <div class="mb-4">
+          <label for="nameCus">Tên khách hàng</label>
+          <div>
+            <select id="nameCus">
+              <option ></option>
+              <option></option>
+            </select>
+          </div>
+        </div>
+        <div class="mb-4 ">
+          <label for="dateStart">Ngày bắt đầu</label>
+          <div>
+            <input type="date" id="dateStart" class="form-control"/>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="mb-4 ">
+          <label for="dateEnd">Ngày kết thúc</label>
+          <div>
+            <input type="date" id="dateEnd" class="form-control"/>
+          </div>
+        </div>
+        <div class="mb-4 ">
+          <label for="deposit">Tiền đặt cọc</label>
+          <div>
+            <input type="text" id="deposit" class="form-control" placeholder="Nhập tiền đặt cọc.."/>
+          </div>
+        </div>
+        <div class="mb-4 ">
+          <label for="employee">Tên nhân viên</label>
+          <div>
+            <select id="employee" >
+              <option ></option>
+              <option></option>
+            </select>
+          </div>
+        </div>
+        <div class="mb-4">
+          <label>Dịch vụ đính kèm</label>
+          <button class="btn btn-warning my-2 my-sm-0" type="button" data-bs-toggle="modal"
+                  data-bs-target="#modalAdd2">+
+          </button>
+        </div>
+      </div>
+      <div class="mb-4 text-center">
+        <button id="save"
+                class="btn btn-info btn-outline-success btn-sm border border-2 border-success text-dark">
+          Tạo hợp đồng <i class="fa-solid fa-floppy-disk"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--modal thêm dịch vụ đi kèm-->
+<div class="modal fade" id="modalAdd2" tabindex="-1"
+     aria-labelledby="exampleModalLabel" aria-hidden="true"
+     data-bs-backdrop="static">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Thêm dịch vụ đính kèm?</h1>
+        <button type="button" class="btn-close"
+                data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <table class="table table-view">
+        <tr hidden>
+          <th>
+            <label >Id:</label>
+          </th>
+          <td>
+            <input readonly type="text" >
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <label for="nameAtt">Tên dịch vụ đi kèm:</label>
+          </th>
+          <td>
+            <select id="nameAtt" >
+              <option>oto</option>
+              <option>xe đạp</option>
+              <option>xe máy</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <label for="quantity">Số lượng:</label>
+          </th>
+          <td>
+            <input type="number" id="quantity" >
+          </td>
+        </tr>
+        <tr hidden>
+          <th>
+            <label >Mã hợp đồng</label>
+          </th>
+          <td>
+            <input readonly type="text" id="idInput" >
+          </td>
+        </tr>
+      </table>
+      <div class="mb-4 text-center">
+        <button class="btn btn-info btn-outline-success btn-sm border border-2 border-success text-dark">
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--modal danh sách dịch vụ đi kèm-->
+<div class="modal fade" id="showAttachDetail" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content modalCSS">
+      <div class="modal-header">
+        <h4 class="modal-title text-center" id="exampleModalLabel2">Danh sách dịch vụ đính kèm</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table id="showAttach"></table>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
