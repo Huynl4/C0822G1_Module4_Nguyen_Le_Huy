@@ -1,65 +1,64 @@
-<div class="card-group">
-  <div class="card">
-    <img src="https://cdn.onekindesign.com/wp-content/uploads/2022/01/White-Brick-Home-Amy-Storm-Company-01-1-Kindesign.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">House</h5>
-      <p class="card-text">Diện tích: 300m2</p>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">New</small>
-    </div>
-  </div>
-  <div class="card">
-    <img src="https://cdn.indesignlive.com/wp-content/uploads/1.smallbedsfeat-1170x780.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Room</h5>
-      <p class="card-text">Diện tích: 100m2</p>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">New</small>
-    </div>
-  </div>
-  <div class="card">
-    <img src="https://cdn.cet.edu.vn/wp-content/uploads/2019/02/villa-khong-gian-sang-trong.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Villa</h5>
-      <p class="card-text">Diện tích: 200m2</p>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">New</small>
-    </div>
-  </div>
-</div>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <td>Stt</td>
+    <td>Tên</td>
+    <td>Diện tích</td>
+    <td>Giá</td>
+    <td>Số lượng người</td>
+    <td>Kiểu thuê</td>
+    <td>Loại dịch vụ</td>
+    <td>Loại phòng</td>
+    <td>Mô tả</td>
+    <td>Diện tích hồ bơi</td>
+    <td>Số tầng</td>
+    <td>Dịch vụ miễn phí</td>
+    <td colspan="3"></td>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let temp of facilityList; index as i">
+    <td>{{i + 1}}</td>
+    <td>{{temp.name}}</td>
+    <td>{{temp.area}}</td>
+    <td>{{temp.cost}}</td>
+    <td>{{temp.maxPeople}}</td>
+    <td>{{temp.rentType.name}}</td>
+    <td>{{temp.facilityType.name}}</td>
+    <td>{{temp.standardRoom}}</td>
+    <td>{{temp.description}}</td>
+    <td>{{temp.poolArea}}</td>
+    <td>{{temp.numberFloor}}</td>
+    <td>{{temp.facilityFree}}</td>
 
-<div class="card-group">
-  <div class="card">
-    <img src="https://images.adsttc.com/media/images/5ecd/d4ac/b357/65c6/7300/009d/large_jpg/02C.jpg?1590547607" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">House</h5>
-      <p class="card-text">Diện tích: 300m2</p>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">New</small>
-    </div>
-  </div>
-  <div class="card">
-    <img src="https://media.houseandgarden.co.uk/photos/637637c2e4eb0449205a261c/3:2/w_1998,h_1332,c_limit/Shot-04_068_RT.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Room</h5>
-      <p class="card-text">Diện tích: 100m2</p>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">New</small>
-    </div>
-  </div>
-  <div class="card">
-    <img src="https://q-xx.bstatic.com/xdata/images/hotel/max1024x768/314234927.jpg?k=e8d0ff333645000b3345bf3c924ebdba3547cd73c362881b16049f5fe5d19701&o=" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Villa</h5>
-      <p class="card-text">Diện tích: 200m2</p>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">New</small>
+    <td><a [routerLink]="['/createFacility']"  class="btn btn-warning">Tạo</a></td>
+    <td><a [routerLink]="['/editFacility']"  class="btn btn-secondary">Sửa</a></td>
+    <td>
+      <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+        Xóa
+      </a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<!-- Modal Delete -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Xóa dịch vụ!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input name="deleteId" hidden id="deleteId">
+        <pre>Bạn chắn chắn muốn xóa dịch vụ ?</pre>
+        <pre style="color: darkred" id="deleteName"></pre>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Hủy</button>
+        <button type="submit" class="btn btn-info">Xác nhận</button>
+      </div>
     </div>
   </div>
 </div>

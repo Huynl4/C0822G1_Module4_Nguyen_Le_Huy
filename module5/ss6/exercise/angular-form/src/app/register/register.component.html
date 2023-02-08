@@ -1,0 +1,101 @@
+<form [formGroup]="reactiveForm" (ngSubmit)="Check()">
+  <div>
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" formControlName="email">
+    <p class="text-danger"
+       *ngIf="reactiveForm.controls.email.hasError('required') && reactiveForm.controls.email.touched">Email is not
+      valid</p>
+    <p class="text-danger"
+       *ngIf="reactiveForm.controls.email.hasError('email')">Email correct format xxxx@xxx.xxx</p>
+  </div>
+
+
+  <div formGroupName="passwordGroup">
+    <div>
+      <label for="password">PassWord </label>
+      <input type="password" id="password" name="password" formControlName="password">
+      <p class="text-danger"
+         *ngIf="reactiveForm.get('passwordGroup').hasError('required','password')
+          && reactiveForm.get('passwordGroup').get('password').touched">
+        Password is not valid.
+      </p>
+      <p class="text-danger"
+         *ngIf="reactiveForm.get('passwordGroup').hasError('minlength','password')
+          && reactiveForm.get('passwordGroup').get('password').dirty">
+        Password must be at least 6 characters.
+      </p>
+    </div>
+
+
+    <div>
+      <label for="confirmPassword">Confirm Password </label>
+      <input type="password" id="confirmPassword" name="confirmPassword" formControlName="confirmPassword">
+      <p class="text-danger"
+         *ngIf="reactiveForm.get('passwordGroup').hasError('notSame') && reactiveForm.get('passwordGroup').touched">
+        ConfirmPassword is not same password.
+      </p>
+
+      <p class="text-danger"
+         *ngIf="reactiveForm.get('passwordGroup').hasError('minlength','confirmPassword')
+          && reactiveForm.get('passwordGroup').get('confirmPassword').touched">
+        ConfirmPassword must be at least 6 characters.
+      </p>
+    </div>
+  </div>
+
+  <div>
+    <label for="country">Country: </label>
+    <select id="country" formControlName="country">
+      <option *ngFor="let c of country" [ngValue]="c.name">{{c.name}}</option>
+    </select>
+    <p class="text-danger"
+       *ngIf="!reactiveForm.controls.country?.valid && (reactiveForm.controls.country?.dirty
+    ||reactiveForm.controls.country?.touched)">
+      Country is not valid.
+    </p>
+  </div>
+
+  <div>
+    <label for="age">Age </label>
+    <input type="number" id="age" name="age" formControlName="age">
+
+    <p class="text-danger"
+       *ngIf="!reactiveForm.controls.age?.valid && (reactiveForm.controls.age?.dirty
+    ||reactiveForm.controls.age?.touched)">
+      Age is not valid and must be over 18 years old.
+    </p>
+  </div>
+
+  <div class="mt-3 mb-3">
+    <label>Gender: </label>
+    <label><input type="radio" value="male" name="gender" formControlName="gender"> Male</label>
+    <label><input type="radio" value="female" name="gender" formControlName="gender"> Female</label>
+    <label><input type="radio" value="LGBT" name="gender" formControlName="gender"> LGBT</label>
+
+    <p class="text-danger"
+       *ngIf="!reactiveForm.controls.gender?.valid && (reactiveForm.controls.gender?.dirty
+    ||reactiveForm.controls.gender?.touched)">
+      Gender is not valid.
+    </p>
+  </div>
+
+
+  <div>
+    <label for="phone">Phone </label>
+    <input type="text" id="phone" name="phone" formControlName="phone">
+
+    <p class="text-danger"
+       *ngIf="!reactiveForm.controls.phone?.valid && (reactiveForm.controls.phone?.dirty
+    ||reactiveForm.controls.phone?.touched)">
+      Phone is not valid and enter the correct format +84xxxxxxxxx
+    </p>
+  </div>
+
+
+  <div id="submit">
+    <p>
+      <button type="submit" [disabled]="!reactiveForm.valid">Submit</button>
+    </p>
+  </div>
+</form>
+<p></p>
