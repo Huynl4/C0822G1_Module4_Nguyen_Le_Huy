@@ -1,0 +1,51 @@
+<div>
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <td>STT</td>
+      <td>Tên</td>
+      <td>Giá</td>
+      <td>Mô tả</td>
+      <td colspan="2"></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let product of products; index as i">
+      <td>{{i + 1}}</td>
+      <td>{{product.name}}</td>
+      <td>{{product.price}}</td>
+      <td>{{product.description}}</td>
+      <td>
+        <button [routerLink]="['/edit',product.id]" class="btn btn-secondary">Chỉnh sửa</button>
+      </td>
+      <td>
+        <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" (click)="temp=product">
+          Xóa
+        </a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<button routerLink="/create" class="btn btn-info"><i class="fa-solid fa-plus"></i> Thêm mới</button>
+
+<!-- Modal Delete -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Xóa dịch vụ!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input name="deleteId" hidden id="deleteId">
+        <pre>Bạn chắn chắn muốn xóa:{{temp.name}}?</pre>
+        <pre style="color: darkred" id="deleteName"></pre>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Hủy</button>
+        <button type="submit" class="btn btn-info" (click)="delete(temp.id)" data-bs-dismiss="modal">Xác nhận</button>
+      </div>
+    </div>
+  </div>
+</div>

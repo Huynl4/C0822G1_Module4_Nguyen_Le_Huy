@@ -1,0 +1,18 @@
+<div class="container">
+  <table class="table table-dark">
+    <thead>
+    <tr>
+      <th>STT</th>
+      <th>Word</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let w of words;index as i">
+      <td>{{i+1}}</td>
+      <td>{{w.word}}</td>
+      <td><button class="btn btn-info" [routerLink]="['/info',w.id]">Info</button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
