@@ -7,11 +7,11 @@ import {Iword} from "../model/iword";
 })
 export class DictionaryService {
   words: Iword[] = [
-    {id: 1, word: "one", mean: "Một"},
-    {id: 2, word: "two", mean: "Hai"},
-    {id: 3, word: "three", mean: "Ba"},
-    {id: 4, word: "four", mean: "Bốn"},
-    {id: 5, word: "five", mean: "Năm"},
+    {id: 1, word: "dog", mean: "chó"},
+    {id: 2, word: "cat", mean: "mèo"},
+    {id: 3, word: "mouse", mean: "chuột"},
+    {id: 4, word: "hổ", mean: "tiger"},
+    {id: 5, word: "chim", mean: "bird"},
   ]
 
   constructor() {
