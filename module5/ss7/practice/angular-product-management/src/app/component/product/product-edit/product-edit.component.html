@@ -2,24 +2,30 @@
 <form [formGroup]="updateForm" (ngSubmit)="update(id)">
   <table>
     <tr>
-      <td>Mã sản phẩm:</td>
-      <td><input type="number" formControlName="id"></td>
-    </tr>
-    <tr>
       <td>Tên sản phẩm:</td>
       <td><input type="text" formControlName="name"></td>
     </tr>
     <tr>
       <td>Giá sản phẩm</td>
-      <td><input type="number" formControlName="price"></td>
+      <td><input type="text" formControlName="price"></td>
     </tr>
     <tr>
       <td>Mô tả về sản phẩm</td>
       <td><input type="text" formControlName="description"></td>
     </tr>
     <tr>
+      <td>Thể loại</td>
+      <td>
+        <select formControlName="catelory" [compareWith]="compareFun">
+          <option *ngFor="let c of catelory" [ngValue]="c">{{c.name}}</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
       <td></td>
-      <td><button>Xác nhận</button></td>
+      <td>
+        <button>Xác nhận</button>
+      </td>
     </tr>
   </table>
 </form>

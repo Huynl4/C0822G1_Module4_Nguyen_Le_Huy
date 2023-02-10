@@ -1,0 +1,64 @@
+{
+  "product": [
+    {
+      "id": 3,
+      "name": "appleádjhasd",
+      "price": "15$",
+      "description": "mới",
+      "catelory": {
+        "id": 2,
+        "name": "okk1"
+      }
+    },
+    {
+      "id": 4,
+      "name": "bb",
+      "price": "bbasd",
+      "description": "aa",
+      "catelory": {
+        "id": 1,
+        "name": "okk"
+      }
+    },
+    {
+      "name": "huynl",
+      "price": "15$",
+      "description": "new",
+      "catelory": {
+        "id": 2,
+        "name": "okk1"
+      },
+      "id": 5
+    },
+    {
+      "name": "Cao Minh",
+      "price": "15$",
+      "description": "New",
+      "catelory": {
+        "id": 2,
+        "name": "okk1"
+      },
+      "id": 6
+    },
+    {
+      "name": "Mậu Hoàng",
+      "price": "15$",
+      "description": "new",
+      "catelory": {
+        "id": 2,
+        "name": "okk1"
+      },
+      "id": 7
+    }
+  ],
+  "catelory": [
+    {
+      "id": 1,
+      "name": "okk"
+    },
+    {
+      "id": 2,
+      "name": "okk1"
+    }
+  ]
+}

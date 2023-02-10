@@ -1,3 +1,11 @@
+<h1>Danh Sách Sản Phẩm</h1>
+
+<div class="input-group">
+  <input #nameSearch type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+         aria-describedby="search-addon"/>
+  <button type="button" class="btn btn-outline-primary" (click)="searchNameProduct(nameSearch.value)">search</button>
+</div>
+<button routerLink="/create" class="btn btn-info"><i class="fa-solid fa-plus"></i> Thêm mới</button>
 <div>
   <table class="table table-bordered">
     <thead>
@@ -6,20 +14,23 @@
       <td>Tên</td>
       <td>Giá</td>
       <td>Mô tả</td>
+      <td>The loai</td>
       <td colspan="2"></td>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let product of products; index as i">
       <td>{{i + 1}}</td>
-      <td>{{product.name}}</td>
-      <td>{{product.price}}</td>
-      <td>{{product.description}}</td>
+      <td>{{product?.name}}</td>
+      <td>{{product?.price}}</td>
+      <td>{{product?.description}}</td>
+      <td>{{product?.catelory?.name}}</td>
       <td>
         <button [routerLink]="['/edit',product.id]" class="btn btn-secondary">Chỉnh sửa</button>
       </td>
       <td>
-        <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" (click)="temp=product">
+        <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal"
+           (click)="deleteProduct(product?.id)">
           Xóa
         </a>
       </td>
@@ -27,7 +38,7 @@
     </tbody>
   </table>
 </div>
-<button routerLink="/create" class="btn btn-info"><i class="fa-solid fa-plus"></i> Thêm mới</button>
+
 
 <!-- Modal Delete -->
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
@@ -44,7 +55,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Hủy</button>
-        <button type="submit" class="btn btn-info" (click)="delete(temp.id)" data-bs-dismiss="modal">Xác nhận</button>
+        <button type="submit" class="btn btn-info" (click)="delete()" data-bs-dismiss="modal">Xác nhận</button>
       </div>
     </div>
   </div>
