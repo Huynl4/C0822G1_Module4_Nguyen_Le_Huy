@@ -18,7 +18,7 @@ const routes: Routes = [
   {path:'editFacility',component:FacilityEditComponent},
   {path:'customer',component:CustomerListComponent},
   {path:'createCustomer',component:CustomerCreateComponent},
-  {path:'editCustomer',component:CustomerEditComponent}
+  {path:'editCustomer/:id',component:CustomerEditComponent}
 ];
 
 @NgModule({

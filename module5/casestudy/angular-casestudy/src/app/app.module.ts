@@ -14,6 +14,10 @@ import { CustomerListComponent } from './component/customer/customer-list/custom
 import { CustomerCreateComponent } from './component/customer/customer-create/customer-create.component';
 import { CustomerEditComponent } from './component/customer/customer-edit/customer-edit.component';
 import { ContractListComponent } from './component/contract/contract-list/contract-list.component';
+import {HttpClientModule} from "@angular/common/http";
+import {ReactiveFormsModule} from "@angular/forms";
+import {NgxPaginationModule} from "ngx-pagination";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -32,7 +36,11 @@ import { ContractListComponent } from './component/contract/contract-list/contra
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    NgxPaginationModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

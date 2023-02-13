@@ -48,7 +48,7 @@ export class ProductEditComponent implements OnInit {
         price: new FormControl(next.price),
         description: new FormControl(next.description),
         catelory: new FormControl(next.catelory)
-      });
+      })
     });
   }
 

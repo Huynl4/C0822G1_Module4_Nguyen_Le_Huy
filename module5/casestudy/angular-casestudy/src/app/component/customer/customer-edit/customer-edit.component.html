@@ -8,59 +8,58 @@
                alt="Sample photo">
           <div class="card-body p-4 p-md-5">
             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Chỉnh sửa Khách hàng</h3>
+            <form [formGroup]="updateForm" (ngSubmit)="update()">
+              <input type="hidden">
+              <div class="form-outline mb-4">
+                <input type="text" class="form-control" formControlName="name"/>
+                <label class="form-label">Tên khách hàng</label>
+              </div>
+              <div class="form-outline mb-4">
+                <input type="date" class="form-control" formControlName="dateOfBirth"/>
+                <label class="form-label">Ngày sinh</label>
+              </div>
 
-            <input type="hidden" >
-            <div class="form-outline mb-4">
-              <input type="text"  class="form-control"/>
-              <label class="form-label">Tên khách hàng</label>
-            </div>
-            <div class="form-outline mb-4">
-              <input type="date"  class="form-control"/>
-              <label class="form-label">Ngày sinh</label>
-            </div>
-
-            <div class="row">
-              <div class="col-md-6 mb-4">
-                <div class="form-outline datepicker">
-                  <input type="radio"  value="1">Nam
-                  <input type="radio"  value="0">Nữ
-                  <br>
-                  <label class="form-label">Giới tính</label>
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline datepicker">
+                    <input type="radio" value="Nam" formControlName="gender">Nam
+                    <input type="radio" value="Nữ" formControlName="gender">Nữ
+                    <br>
+                    <label class="form-label">Giới tính</label>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="form-outline mb-4">
-              <input type="text" class="form-control"/>
-              <label class="form-label">Chứng minh thư</label>
-            </div>
+              <div class="form-outline mb-4">
+                <input type="text" class="form-control" formControlName="idCard"/>
+                <label class="form-label">Chứng minh thư</label>
+              </div>
 
-            <div class="form-outline mb-4">
-              <input type="text"  class="form-control"/>
-              <label class="form-label">Số điện thoại</label>
-            </div>
+              <div class="form-outline mb-4">
+                <input type="text" class="form-control" formControlName="phoneNumber"/>
+                <label class="form-label">Số điện thoại</label>
+              </div>
 
-            <div class="form-outline mb-4">
-              <input type="text"  class="form-control"/>
-              <label class="form-label">Email</label>
-            </div>
+              <div class="form-outline mb-4">
+                <input type="text" class="form-control" formControlName="email"/>
+                <label class="form-label">Email</label>
+              </div>
 
-            <div class="form-outline mb-4">
-              <input type="text"  class="form-control"/>
-              <label class="form-label">Địa chỉ</label>
-            </div>
-            <div class="mb-4">
+              <div class="form-outline mb-4">
+                <input type="text" class="form-control" formControlName="address"/>
+                <label class="form-label">Địa chỉ</label>
+              </div>
+              <div class="mb-4">
+                <select formControlName="customerType" [compareWith]="compareFun">
+                  <option *ngFor="let c of customerType" [ngValue]="c">{{c.name}}</option>
+                </select>
+                <label class="form-label">Loại khách hàng</label>
+              </div>
 
-              <select  class="select">
-                <option>VIP</option>
-                <option>NEW</option>
-              </select>
-              <label class="form-label">Loại khách hàng</label>
-            </div>
-
-            <button type="submit" class="btn btn-info btn-lg mb-1">Xác nhận</button>
-            <p style="margin-left: 20%">
-              <a class="btn btn-danger">Danh sách khách hàng</a>
-            </p>
+              <button type="submit" class="btn btn-info btn-lg mb-1">Xác nhận</button>
+              <p style="margin-left: 20%">
+                <a class="btn btn-danger">Danh sách khách hàng</a>
+              </p>
+            </form>
           </div>
         </div>
       </div>

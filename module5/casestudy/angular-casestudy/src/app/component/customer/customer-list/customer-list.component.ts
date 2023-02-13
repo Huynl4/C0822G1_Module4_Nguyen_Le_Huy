@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Customer} from "../../../model/customer";
+import {CustomerService} from "../../../service/customer.service";
 
 @Component({
   selector: 'app-customer-list',
@@ -7,33 +8,27 @@ import {Customer} from "../../../model/customer";
   styleUrls: ['./customer-list.component.css']
 })
 export class CustomerListComponent implements OnInit {
-customerList: Customer[]=[
-  {
-    id: 1,
-    name: 'Huynl4',
-    dateOfBirth: '11 / 11 / 2000',
-    gender: "Nam",
-    idCard: 121212122,
-    phoneNumber: 111111111,
-    email: 'huynl4@yahoo.com',
-    address: 'Canada',
-    customerType: {id: 1, name: 'Nghèo'},
-  },
-  {
-    id: 1,
-    name: 'Bảo Hx',
-    dateOfBirth: '11 / 11 / 2000',
-    gender: "Nam",
-    idCard: 121212122,
-    phoneNumber: 111111111,
-    email: 'huynl4@yahoo.com',
-    address: 'Canada',
-    customerType: {id: 1, name: 'Nghèo'},
+  customerList: Customer[] = [];
+  id: number | undefined;
+  cus: Customer = {};
+  p = 0;
+
+  constructor(private customerService: CustomerService) {
+    this.customerService.getAll().subscribe(next => {
+      this.customerList = next;
+    })
   }
-]
-  constructor() { }
 
   ngOnInit(): void {
+    this.customerService.getAll().subscribe(next => {
+      this.customerList = next;
+    })
   }
 
+  delete(id: number) {
+    this.customerService.delete(id).subscribe(next => {
+      alert("xóa ok");
+      this.ngOnInit()
+    });
+  }
 }

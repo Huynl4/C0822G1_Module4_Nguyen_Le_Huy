@@ -1,0 +1,56 @@
+{
+  "customer": [
+    {
+      "id": 1,
+      "name": "Nguyễn Lê Huy",
+      "dateOfBirth": "11 / 11 / 1998",
+      "gender": "Nam",
+      "idCard": 789456123,
+      "phoneNumber": 123456789,
+      "email": "huynl4@gmail.com",
+      "address": "USA",
+      "customerType": {
+        "id": 1,
+        "name": "Nghèo"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Hoàng Đức Danh",
+      "dateOfBirth": "11 / 11 / 2001",
+      "gender": "Nam",
+      "idCard": 789456123,
+      "phoneNumber": 123456789,
+      "email": "danh@gmail.com",
+      "address": "Canada",
+      "customerType": {
+        "id": 2,
+        "name": "Khổ"
+      }
+    },
+    {
+      "name": "Hồ Xuân Bảo",
+      "dateOfBirth": "2023-03-04",
+      "gender": "1",
+      "idCard": "1111111",
+      "phoneNumber": "2222222",
+      "email": "afffffas",
+      "address": "US",
+      "customerType": {
+        "id": 2,
+        "name": "Khổ"
+      },
+      "id": 3
+    }
+  ],
+  "customerType": [
+    {
+      "id": 1,
+      "name": "Nghèo"
+    },
+    {
+      "id": 2,
+      "name": "Khổ"
+    }
+  ]
+}
