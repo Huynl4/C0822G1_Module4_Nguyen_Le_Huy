@@ -9,6 +9,7 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
+  p: number = 1;
   temp: Product = {};
   products: Product[] = [];
   id: number | undefined;
