@@ -1,0 +1,54 @@
+<table class="table table-striped table-hover">
+  <thead>
+  <tr>
+    <td>Stt</td>
+    <td>Tên Bệnh Nhân</td>
+    <td>Ngày nhập viện</td>
+    <td>Ngày ra viện</td>
+    <td>Lý do nhập viện</td>
+    <td>Phương pháp điều trị</td>
+    <td>Bác sĩ điều trị</td>
+    <td colspan="3"></td>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let temp of benhAns; index as i">
+    <td>{{i + 1}}</td>
+    <td>{{temp.benhNhan.name}}</td>
+    <td>{{temp.startDate}}</td>
+    <td>{{temp.endDate}}</td>
+    <td>{{temp.reason}}</td>
+    <td>{{temp.method}}</td>
+    <td>{{temp.doctor}}</td>
+
+
+    <td><a [routerLink]="['/edit',temp.id]" class="btn btn-secondary">Sửa</a></td>
+    <td>
+      <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" (click)="hos=temp">
+        Xóa
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<!-- Modal Delete -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Xóa dịch vụ!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input name="deleteId" hidden id="deleteId">
+        <span>Bạn chắn chắn muốn xóa bệnh nhân có mã là </span><span style="color: red">BN-{{hos.id}}</span><span> này không ?</span>
+        <pre style="color: darkred" id="deleteName"></pre>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Hủy</button>
+        <button type="submit" class="btn btn-info" data-bs-dismiss="modal" (click)="delete(hos.id)">Xác nhận</button>
+      </div>
+    </div>
+  </div>
+</div>

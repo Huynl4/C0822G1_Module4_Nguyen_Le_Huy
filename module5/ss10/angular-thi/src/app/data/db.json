@@ -1,0 +1,26 @@
+{
+  "benhAn": [
+    {
+      "id": 1,
+      "startDate": "2002-12-12",
+      "endDate": "2002-12-12",
+      "reason": "covid",
+      "method": "Tiêm chủng",
+      "doctor": "huynl",
+      "benhNhan": {
+        "id": 1,
+        "name": "Bảo Hồ"
+      }
+    }
+  ],
+  "benhNhan": [
+    {
+      "id": 1,
+      "name": "Bảo Hồ"
+    },
+    {
+      "id": 2,
+      "name": "Mậu Hoàng"
+    }
+  ]
+}

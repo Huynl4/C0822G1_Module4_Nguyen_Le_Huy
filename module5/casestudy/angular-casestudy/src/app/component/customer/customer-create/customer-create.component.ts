@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {CustomerType} from "../../../model/customer-type";
 import {CustomerService} from "../../../service/customer.service";
 import {Router} from "@angular/router";
 import {CustomerTypeService} from "../../../service/customer-type.service";
+import validate = WebAssembly.validate;
 
 @Component({
   selector: 'app-customer-create',
@@ -12,7 +13,7 @@ import {CustomerTypeService} from "../../../service/customer-type.service";
 })
 export class CustomerCreateComponent implements OnInit {
   customerForm: FormGroup = new FormGroup({
-    name: new FormControl(),
+    name: new FormControl("", [Validators.required]),
     dateOfBirth: new FormControl(),
     gender: new FormControl(),
     idCard: new FormControl(),

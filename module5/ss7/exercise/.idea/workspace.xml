@@ -38,7 +38,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../practice" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="ts.external.directory.path" value="D:\dataD\codegym\C0822G1_Module4_Nguyen_Le_Huy\module5\ss7\exercise\angular-dictionary\node_modules\typescript\lib" />
   </component>
   <component name="SvnConfiguration">
@@ -53,6 +53,7 @@
       <updated>1675935607064</updated>
       <workItem from="1675935608148" duration="2560000" />
       <workItem from="1675999384102" duration="8000" />
+      <workItem from="1676282643941" duration="23000" />
     </task>
     <servers />
   </component>
