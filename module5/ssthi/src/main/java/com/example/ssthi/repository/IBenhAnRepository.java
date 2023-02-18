@@ -17,4 +17,26 @@ public interface IBenhAnRepository extends JpaRepository<BenhAn, Long> {
     @Modifying
     @Query(value = "delete from benh_an where benh_an.id=:id", nativeQuery = true)
     void deleteId(@Param("id") Long id);
+
+    @Modifying
+    @Query(value = "insert into benh_an(doctor,end_date,start_date,method,reason,benh_nhan_id) values (:doctor,:endDate,:startDate,:method,:reason,:benhNhanId)", nativeQuery = true)
+    void create(@Param("doctor") String doctor,
+                @Param("endDate") String endDate,
+                @Param("startDate") String startDate,
+                @Param("method") String method,
+                @Param("reasom") String reason,
+                @Param("benhNhanId") Long benhNhanId);
+
+
+    @Query(value = "select * from benh_an where id =:id", nativeQuery = true)
+    BenhAn findId(@Param("id") Long id);
+
+    @Modifying
+    @Query(value = "update benh_an set doctor =:doctor,end_date =: endDate,start_date =: startDate, method =: method,reason =: reason,benh_nhan_id =: benhNhanId", nativeQuery = true)
+    void update(@Param("doctor") String doctor,
+                @Param("endDate") String endDate,
+                @Param("startDate") String startDate,
+                @Param("method") String method,
+                @Param("reason") String reason,
+                @Param("benhNhanId") Long id);
 }

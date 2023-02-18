@@ -12,50 +12,31 @@
               <input type="hidden">
               <div class="form-outline mb-4">
                 <input type="text" class="form-control" formControlName="name"/>
-                <label class="form-label">Tên khách hàng</label><br>
+                <label class="form-label">Tên Bệnh nhân</label><br>
                 <span
-                      style="color: red">Tên phải nhập đúng nhé</span>
+                  style="color: red">Tên phải nhập đúng nhé</span>
               </div>
               <div class="form-outline mb-4">
-                <input type="date" class="form-control" formControlName="dateOfBirth"/>
-                <label class="form-label">Ngày sinh</label>
-              </div>
-
-              <div class="row">
-                <div class="col-md-6 mb-4">
-                  <div class="form-outline datepicker">
-                    <input type="radio" value="1" formControlName="gender">Nam
-                    <input type="radio" value="0" formControlName="gender">Nữ
-                    <br>
-                    <label class="form-label">Giới tính</label>
-                  </div>
-                </div>
+                <input type="date" class="form-control" formControlName="startDate"/>
+                <label class="form-label">Ngày nhập viện</label>
               </div>
               <div class="form-outline mb-4">
-                <input type="text" class="form-control" formControlName="idCard"/>
-                <label class="form-label">Chứng minh thư</label>
+                <input type="date" class="form-control" formControlName="endDate"/>
+                <label class="form-label">Ngày ra viện</label>
+              </div>
+              <div class="form-outline mb-4">
+                <input type="text" class="form-control" formControlName="doctor"/>
+                <label class="form-label">Bác sĩ</label>
               </div>
 
               <div class="form-outline mb-4">
-                <input type="text" class="form-control" formControlName="phoneNumber"/>
-                <label class="form-label">Số điện thoại</label>
+                <input type="text" class="form-control" formControlName="reason"/>
+                <label class="form-label">Lý do nhập viện</label>
               </div>
 
               <div class="form-outline mb-4">
-                <input type="text" class="form-control" formControlName="email"/>
-                <label class="form-label">Email</label>
-              </div>
-
-              <div class="form-outline mb-4">
-                <input type="text" class="form-control" formControlName="address"/>
-                <label class="form-label">Địa chỉ</label>
-              </div>
-              <div class="mb-4">
-
-                <select formControlName="customerType">
-                  <option></option>
-                </select>
-                <label class="form-label">Loại khách hàng</label>
+                <input type="text" class="form-control" formControlName="method"/>
+                <label class="form-label">Phương pháp điều trị</label>
               </div>
 
               <button type="submit" class="btn btn-info btn-lg mb-1">Xác nhận</button>

@@ -16,8 +16,6 @@ import java.util.List;
 public class BenhAnRestController {
     @Autowired
     private IBenhAnService benhAnService;
-    @Autowired
-    private IBenhNhanService benhNhanService;
 
     @GetMapping("")
     public ResponseEntity<List<BenhAn>> findAll() {
@@ -28,6 +26,24 @@ public class BenhAnRestController {
     @DeleteMapping("{id}")
     public ResponseEntity<BenhAn> delete(@PathVariable("id") Long id) {
         benhAnService.delete(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PostMapping("")
+    public ResponseEntity<?> create(@RequestBody BenhAn benhAn) {
+        benhAnService.create(benhAn.getDoctor(), benhAn.getReason(), benhAn.getMethod(), benhAn.getEndDate(), benhAn.getStartDate(), benhAn.getBenhNhan().getId());
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @GetMapping("{id}")
+    public ResponseEntity<BenhAn> findById(@PathVariable("id") Long id) {
+        BenhAn benhAn = benhAnService.findById(id);
+        return new ResponseEntity<>(benhAn, HttpStatus.OK);
+    }
+
+    @PutMapping("")
+    public ResponseEntity<?> update(@RequestBody BenhAn benhAn) {
+        benhAnService.update(benhAn.getDoctor(), benhAn.getEndDate(), benhAn.getStartDate(), benhAn.getMethod(), benhAn.getReason(), benhAn.getBenhNhan().getId());
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

@@ -16,7 +16,7 @@ export class BenhAnService {
   }
 
   findById(id: number): Observable<any> {
-    return this.http.get<any>('http://localhost:3000/benhAn/' + id);
+    return this.http.get<any>('http://localhost:8080/benhAns/' + id);
   }
 
   delete(id: number) {
@@ -24,6 +24,10 @@ export class BenhAnService {
   }
 
   update(benhAn: BenhAn): Observable<any> {
-    return this.http.put<any>('http://localhost:3000/benhAn/' + benhAn.id, benhAn)
+    return this.http.put<any>('http://localhost:3000/benhAn/' + benhAn.id, benhAn);
+  }
+
+  create(benhAn): Observable<any> {
+    return this.http.post('http://localhost:8080/benhAns', benhAn);
   }
 }
