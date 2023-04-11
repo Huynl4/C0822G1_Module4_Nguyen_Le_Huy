@@ -1,0 +1,100 @@
+<h1 style="text-align: center">Danh sách sân bóng</h1>
+<br>
+<a [routerLink]="['/create']" class="btn btn-warning">Tạo</a>
+
+<table class=" table table-hover">
+  <thead>
+  <tr>
+    <th scope="col">STT</th>
+    <th scope="col">Tên sân bóng</th>
+    <th scope="col">Loại sân bóng</th>
+    <th scope="col">Khu vực</th>
+    <th scope="col">Địa chỉ</th>
+    <th scope="col">Khung giờ cho thuê</th>
+    <th scope="col-2">Chức năng</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of sanBong; index as i">
+    <td>{{i + 1}}</td>
+    <td>{{item.name}}</td>
+    <td>{{item.loaiSan.catelory}}</td>
+    <td>{{item.khuVuc.address}}</td>
+    <td>{{item.address}}</td>
+    <td>{{item.time.time}}</td>
+    <td>
+      <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#deleteModal" (click)="sb=item">
+        Sửa
+      </button>
+    </td>
+    <td>
+      <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" (click)="sb=item">
+        Xóa
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+
+<!--      Phân trang-->
+
+<!--<div style="cursor: pointer" class="container-fluid" *ngIf="sanBongList?.content?.length != 0">-->
+<!--  <nav aria-label="Page navigation example" style="float: right; margin-top: 10px">-->
+<!--    <ul *ngIf="sanBongList.totalPages > 3" class="pagination">-->
+<!--      <li class="page-item"><a style="cursor: pointer" class="page-link" [ngClass]="sanBongList.first ? 'disabled': ''"-->
+<!--                               (click)="getAll(sanBongList.number - 1)">Trang trước</a></li>-->
+
+<!--      <li class="page-item" [class.active]="sanBongList.pageable.pageNumber < sanBongList.totalPages -1"><a-->
+<!--        (click)="getAll(sanBongList.pageable.pageNumber)" class="page-link"> {{sanBongList.pageable.pageNumber-->
+<!--      + ((sanBongList.pageable.pageNumber + 1 == sanBongList.totalPages) ? 0 : 1)}}-->
+<!--      </a></li>-->
+
+<!--      <li class="page-item"><a-->
+<!--        class="page-link"> ...-->
+<!--      </a></li>-->
+
+<!--      <li class="page-item" [class.active]="sanBongList.totalPages - 1 == sanBongList.pageable.pageNumber"><a-->
+<!--        (click)="getAll(sanBongList.totalPages - 1)" class="page-link"> {{sanBongList.totalPages}}-->
+<!--      </a></li>-->
+
+<!--      <li class="page-item"><a class="page-link"-->
+<!--                               [ngClass]="sanBongList.number + 1 == sanBongList.totalPages? 'disabled': ''"-->
+<!--                               (click)="getAll(sanBongList.number + 1)">Trang sau</a></li>-->
+<!--    </ul>-->
+
+<!--    <ul class="pagination" *ngIf="sanBongList.totalPages <= 3">-->
+<!--      <li class="page-item"><a class="page-link" [ngClass]="sanBongList.first ? 'disabled': ''"-->
+<!--                               (click)="getAll(sanBongList.number - 1)">Trang trước</a></li>-->
+
+<!--      <li *ngFor="let num of nums" class="page-item" [class.active]="num == sanBongList.pageable.pageNumber"><a-->
+<!--        (click)="getAll(num)" class="page-link"> {{num + 1}}-->
+<!--      </a></li>-->
+
+<!--      <li class="page-item"><a-->
+<!--        [ngClass]="sanBongList.number + 1 == sanBongList.totalPages? 'disabled': ''"-->
+<!--        (click)="getAll(sanBongList.number + 1)">Trang sau</a></li>-->
+<!--    </ul>-->
+<!--  </nav>-->
+<!--</div>-->
+
+<!-- Modal Delete -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Xóa dịch vụ!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input name="deleteId" hidden id="deleteId">
+        <span>Bạn chắn chắn muốn xóa sân </span><span style="color: red">{{sb.name}}</span><span> này không ?</span>
+        <pre style="color: darkred" id="deleteName"></pre>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Hủy</button>
+        <button type="submit" class="btn btn-info" data-bs-dismiss="modal" (click)="delete(sb.id)">Xác nhận</button>
+      </div>
+    </div>
+  </div>
+</div>
