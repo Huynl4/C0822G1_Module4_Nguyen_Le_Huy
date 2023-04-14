@@ -1,22 +1,20 @@
-package com.example.backend.dto;
+package com.example.backend.model;
 
-import org.springframework.validation.Errors;
-import org.springframework.validation.Validator;
+import javax.persistence.*;
 
-import javax.validation.constraints.NotNull;
-
-public class CoSoDTO implements Validator {
+@Entity
+public class CoSo {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @NotNull(message = "Không được để trống")
     private String name;
-    @NotNull(message = "Không được để trống")
+    @Column(columnDefinition = "date", nullable = false)
     private String dateOpen;
-    @NotNull(message = "Không được để trống")
     private String address;
-    @NotNull(message = "Không được để trống")
     private String person;
+    private boolean flagDelete;
 
-    public CoSoDTO() {
+    public CoSo() {
     }
 
     public int getId() {
@@ -59,13 +57,11 @@ public class CoSoDTO implements Validator {
         this.person = person;
     }
 
-    @Override
-    public boolean supports(Class<?> clazz) {
-        return false;
+    public boolean isFlagDelete() {
+        return flagDelete;
     }
 
-    @Override
-    public void validate(Object target, Errors errors) {
-
+    public void setFlagDelete(boolean flagDelete) {
+        this.flagDelete = flagDelete;
     }
 }

@@ -8,8 +8,9 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { SanBongComponent } from './sanbong/san-bong/san-bong.component';
-import { CreateComponent } from './sanbong/create/create.component';
+import { ListComponent } from './component/list/list.component';
+import { CreateComponent } from './component/create/create.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -17,8 +18,9 @@ import { CreateComponent } from './sanbong/create/create.component';
     HeaderComponent,
     FooterComponent,
     NavbarComponent,
-    SanBongComponent,
-    CreateComponent
+    ListComponent,
+    CreateComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

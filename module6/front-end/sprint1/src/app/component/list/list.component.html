@@ -1,34 +1,54 @@
-<h1 style="text-align: center">Danh sách sân bóng</h1>
+<h1 style="text-align: center;text-shadow: 0px 5px 5px #999999;margin-top: 20px">Hệ thống phòng tập Fitness & yoga</h1>
 <br>
-<a [routerLink]="['/create']" class="btn btn-warning">Tạo</a>
+<!--<a [routerLink]="['/create']" class="btn btn-warning">Tạo</a>-->
 
-<table class=" table table-hover">
+
+<form class="d-flex"
+      style="margin-top: 10px; margin-bottom: 5px;margin-left: 10px">
+  <div class="col-4">
+    <div><label style="float: left;font-weight: bolder">Tên cơ sở:</label></div>
+    <input class="form-control me-2" type="search" #coSoName
+           placeholder="Nhập tên cơ sở"
+           aria-label="Search" style="border: 1px solid #b6effb">
+  </div>
+  <div class="col-4" style="margin-left: 20px">
+    <label style="float: left;font-weight: bolder">Tên người quản lý:</label>
+    <input class="form-control me-2" type="search" #coSoPerson
+           placeholder="Nhập tên quản lý"
+           aria-label="Search" style="border: 1px solid #b6effb;margin-top: 20px">
+  </div>
+  <div style="margin-left:20px;margin-top: 25px">
+    <button class="btn" type="submit"
+            (click)="searchCoSo(coSoName.value,coSoPerson.value)"
+            style="text-align: center; size: 5px; border: 0px solid #B6EFFB;background-color: royalblue;width: 100px">
+      Tìm kiếm
+    </button>
+    <a style="margin-left: 30px" [routerLink]="['/create']" class="btn btn-warning">Tạo mới cơ sở</a>
+
+  </div>
+</form>
+
+
+<table class=" table table-hover" style="margin-top: 50px">
   <thead>
   <tr>
     <th scope="col">STT</th>
-    <th scope="col">Tên sân bóng</th>
-    <th scope="col">Loại sân bóng</th>
-    <th scope="col">Khu vực</th>
+    <th scope="col">Tên cơ sở</th>
+    <th scope="col">Ngày khai trương</th>
     <th scope="col">Địa chỉ</th>
-    <th scope="col">Khung giờ cho thuê</th>
+    <th scope="col">Người quản lý</th>
     <th scope="col-2">Chức năng</th>
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let item of sanBong; index as i">
+  <tr *ngFor="let item of coso; index as i">
     <td>{{i + 1}}</td>
     <td>{{item.name}}</td>
-    <td>{{item.loaiSan.catelory}}</td>
-    <td>{{item.khuVuc.address}}</td>
+    <td>{{item.dateOpen}}</td>
     <td>{{item.address}}</td>
-    <td>{{item.time.time}}</td>
+    <td>{{item.person}}</td>
     <td>
-      <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#deleteModal" (click)="sb=item">
-        Sửa
-      </button>
-    </td>
-    <td>
-      <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" (click)="sb=item">
+      <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" (click)="cs=item">
         Xóa
       </button>
     </td>
@@ -88,13 +108,14 @@
       </div>
       <div class="modal-body">
         <input name="deleteId" hidden id="deleteId">
-        <span>Bạn chắn chắn muốn xóa sân </span><span style="color: red">{{sb.name}}</span><span> này không ?</span>
+        <span>Bạn chắn chắn muốn xóa cơ sở </span><span style="color: red">{{cs.name}}</span><span> này không ?</span>
         <pre style="color: darkred" id="deleteName"></pre>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Hủy</button>
-        <button type="submit" class="btn btn-info" data-bs-dismiss="modal" (click)="delete(sb.id)">Xác nhận</button>
+        <button type="submit" class="btn btn-info" data-bs-dismiss="modal" (click)="delete(cs.id)">Xác nhận</button>
       </div>
     </div>
   </div>
 </div>
+

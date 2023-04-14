@@ -1,0 +1,73 @@
+<body style="background-color: #ECECEC">
+<h1 class="text-danger text-center mb-3">Thêm mới cơ sở</h1>
+
+<form [formGroup]="formAdd" (ngSubmit)="add()">
+  <div class="row mb-4">
+    <div class="offset-3 col-6 card p-2 " style="background: #eadfcc;box-shadow: 0 0 20px 0 #253365">
+      <div class="mb-5 mt-2">
+        <label for="name" class="form-label">Tên sân bóng: </label>
+        <input type="text" class="form-control" id="name" formControlName="name">
+        <div style="position: absolute">
+          <p class="text-danger m-0" *ngIf="formAdd.controls.name.hasError('required')&&formAdd.controls.name.touched"> Yêu
+            cầu phải nhập.</p>
+          <p class="text-danger m-0" *ngIf="errors.name">{{errors.name}}</p>
+        </div>
+      </div>
+      <div class="mb-4">
+        <label for="address" class="form-label">Địa chỉ: </label>
+        <input type="text" class="form-control" id="address" formControlName="address">
+        <div style="position: absolute">
+          <p class="text-danger m-0" *ngIf="errors.address">{{errors.address}}</p>
+          <p class="text-danger m-0"
+             *ngIf="formAdd.controls.address.hasError('required')&&formAdd.controls.address.touched"> Yêu cầu phải
+            nhập.</p>
+        </div>
+      </div>
+<!--      <div class="mb-4">-->
+<!--        <label for="area" class="form-label">Khu vực: </label>-->
+<!--        <select class="form-select" formControlName="area" id="area">-->
+<!--          <option value="">-&#45;&#45; Chọn khu vực -&#45;&#45;</option>-->
+<!--          <option *ngFor="let item of areaList" [ngValue]="item">{{item.name}}</option>-->
+<!--        </select>-->
+<!--        <div style="position: absolute">-->
+<!--          <p class="text-danger m-0" *ngIf="errors.area">{{errors.area}}</p>-->
+<!--          <p class="text-danger m-0" *ngIf="formAdd.controls.area.hasError('required')&&formAdd.controls.area.touched"> Yêu-->
+<!--            cầu phải nhập.</p>-->
+<!--        </div>-->
+<!--      </div>-->
+      <div class="mb-4">
+        <label for="pitchType" class="form-label">Loại sân: </label>
+        <select class="form-select" formControlName="pitchType" id="pitchType">
+          <option value="">--- Chọn loại sân ---</option>
+          <option *ngFor="let item of pitchTypeList" [ngValue]="item">{{item.typeName}}</option>
+        </select>
+        <div style="position: absolute">
+          <p class="text-danger m-0" *ngIf="errors.pitchType">{{errors.pitchType}}</p>
+          <p class="text-danger m-0"
+             *ngIf="formAdd.controls.pitchType.hasError('required')&&formAdd.controls.pitchType.touched"> Yêu cầu phải
+            nhập.</p>
+        </div>
+      </div>
+      <div class="mb-4">
+        <label for="timeSlot" class="form-label">Khung giờ thuê: </label>
+        <select class="form-select" formControlName="timeSlot" id="timeSlot">
+          <option value="">--- Chọn khung giờ thuê ---</option>
+          <option *ngFor="let item of timeSlotList"
+                  [ngValue]="item">{{'Thời gian: ' + item.time + '. Giá: ' + item.price }}</option>
+        </select>
+        <div style="position: absolute">
+          <p class="text-danger m-0" *ngIf="errors.timeSlot">{{errors.timeSlot}}</p>
+          <p class="text-danger m-0"
+             *ngIf="formAdd.controls.timeSlot.hasError('required')&&formAdd.controls.timeSlot.touched"> Yêu cầu phải
+            nhập.</p>
+        </div>
+      </div>
+
+      <div class="text-center m-2">
+        <button class="w-25 btn btn-success" type="submit">Thêm mới</button>
+      </div>
+    </div>
+  </div>
+</form>
+</body>
+
