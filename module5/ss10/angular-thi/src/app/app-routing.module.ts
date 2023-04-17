@@ -1,8 +1,7 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {CreateComponent} from "./component/create/create.component";
-import {HomeComponent} from "./component/home/home.component";
-import {EditComponent} from "./component/edit/edit.component";
+ import {EditComponent} from "./component/edit/edit.component";
 import {ListComponent} from "./component/list/list.component";
 
 

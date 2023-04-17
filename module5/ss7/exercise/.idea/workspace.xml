@@ -38,7 +38,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../practice" />
     <property name="ts.external.directory.path" value="D:\dataD\codegym\C0822G1_Module4_Nguyen_Le_Huy\module5\ss7\exercise\angular-dictionary\node_modules\typescript\lib" />
   </component>
   <component name="SvnConfiguration">
@@ -54,6 +54,7 @@
       <workItem from="1675935608148" duration="2560000" />
       <workItem from="1675999384102" duration="8000" />
       <workItem from="1676282643941" duration="23000" />
+      <workItem from="1677679968818" duration="18000" />
     </task>
     <servers />
   </component>
@@ -73,9 +74,9 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="549" y="163" key="FileChooserDialogImpl" timestamp="1675999390532">
+    <state x="549" y="163" key="FileChooserDialogImpl" timestamp="1677679984963">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state x="549" y="163" key="FileChooserDialogImpl/0.0.1536.816@0.0.1536.816" timestamp="1675999390532" />
+    <state x="549" y="163" key="FileChooserDialogImpl/0.0.1536.816@0.0.1536.816" timestamp="1677679984963" />
   </component>
 </project>

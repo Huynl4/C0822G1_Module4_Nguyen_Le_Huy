@@ -24,7 +24,7 @@ export class BenhAnService {
   }
 
   update(benhAn: BenhAn): Observable<any> {
-    return this.http.put<any>('http://localhost:3000/benhAn/' + benhAn.id, benhAn);
+    return this.http.put<any>('http://localhost:3000/benhAns/' + benhAn.id, benhAn);
   }
 
   create(benhAn): Observable<any> {

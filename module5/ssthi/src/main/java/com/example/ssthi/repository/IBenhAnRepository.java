@@ -19,7 +19,7 @@ public interface IBenhAnRepository extends JpaRepository<BenhAn, Long> {
     void deleteId(@Param("id") Long id);
 
     @Modifying
-    @Query(value = "insert into benh_an(doctor,end_date,start_date,method,reason,benh_nhan_id) values (:doctor,:endDate,:startDate,:method,:reason,:benhNhanId)", nativeQuery = true)
+    @Query(value = "insert into benh_an(doctor,end_date,start_date,method,reason,benh_nhan_id) values (:doctor,:endDate,:startDate,:method,:reason,:benhNhan)", nativeQuery = true)
     void create(@Param("doctor") String doctor,
                 @Param("endDate") String endDate,
                 @Param("startDate") String startDate,
@@ -32,7 +32,7 @@ public interface IBenhAnRepository extends JpaRepository<BenhAn, Long> {
     BenhAn findId(@Param("id") Long id);
 
     @Modifying
-    @Query(value = "update benh_an set doctor =:doctor,end_date =: endDate,start_date =: startDate, method =: method,reason =: reason,benh_nhan_id =: benhNhanId", nativeQuery = true)
+    @Query(value = "update benh_an set doctor =:doctor,end_date =:endDate,start_date =:startDate, method =:method,reason =:reason,benh_nhan_id =:benhNhanId", nativeQuery = true)
     void update(@Param("doctor") String doctor,
                 @Param("endDate") String endDate,
                 @Param("startDate") String startDate,

@@ -17,7 +17,6 @@ export class CustomerService {
   saveCustomer(customer): Observable<any> {
     return this.http.post<any>('http://localhost:3000/customer', customer);
   }
-
   findById(id: number): Observable<any> {
     return this.http.get<any>('http://localhost:3000/customer/' + id);
   }

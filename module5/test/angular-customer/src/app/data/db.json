@@ -1,0 +1,14 @@
+{
+  "user": [
+    {
+      "id": 1,
+      "name": "huynl",
+      "phoneNumber": "123456",
+      "email": "huynl4@gmail.com",
+      "address": "đn",
+      "age": 24,
+      "gender": "nam",
+      "dateOfBirth": "15/04/1998"
+    }
+  ]
+}
