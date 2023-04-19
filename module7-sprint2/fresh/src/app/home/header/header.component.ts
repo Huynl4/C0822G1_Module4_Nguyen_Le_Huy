@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ViewportScroller} from '@angular/common';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private scroller: ViewportScroller) { }
 
   ngOnInit(): void {
   }
 
+  scrollToPosition() {
+    this.scroller.scrollToPosition([0, 800]);
+  }
 }
