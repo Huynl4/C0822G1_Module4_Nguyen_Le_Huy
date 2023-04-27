@@ -1,5 +1,7 @@
 package com.example.freshbe.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -18,9 +20,11 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name = "category_id", referencedColumnName = "id")
+    @JsonBackReference
     private Category category;
     @ManyToOne
     @JoinColumn(name = "supplier_id", referencedColumnName = "id")
+    @JsonBackReference
     private Supplier supplier;
 
     public Product() {

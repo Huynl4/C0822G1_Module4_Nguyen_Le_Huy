@@ -5,7 +5,7 @@
   <title>Fresh</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/x-icon" href="">
   <link rel="stylesheet" type="text/css" href="slide navbar style.css">
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
   <!--  ///-->
@@ -46,4 +46,40 @@
 
 <!-- Template Javascript -->
 <script src="assets/js/main.js"></script>
+<script>
+  $(document).ready(function(){
+
+    var quantitiy=0;
+    $('.quantity-right-plus').click(function(e){
+
+      // Stop acting like a button
+      e.preventDefault();
+      // Get the field name
+      var quantity = parseInt($('#quantity').val());
+
+      // If is not undefined
+
+      $('#quantity').val(quantity + 1);
+
+
+      // Increment
+
+    });
+
+    $('.quantity-left-minus').click(function(e){
+      // Stop acting like a button
+      e.preventDefault();
+      // Get the field name
+      var quantity = parseInt($('#quantity').val());
+
+      // If is not undefined
+
+      // Increment
+      if(quantity>0){
+        $('#quantity').val(quantity - 1);
+      }
+    });
+
+  });
+</script>
 </html>

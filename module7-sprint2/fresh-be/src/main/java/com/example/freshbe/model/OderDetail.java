@@ -1,5 +1,7 @@
 package com.example.freshbe.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,10 +13,12 @@ public class OderDetail {
 
     @ManyToOne
     @JoinColumn(name = "oder_id", referencedColumnName = "id")
+    @JsonBackReference
     private Oder oder;
 
     @ManyToOne
     @JoinColumn(name = "product_id", referencedColumnName = "id")
+    @JsonBackReference
     private Product product;
 
     public OderDetail() {

@@ -5,10 +5,11 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { BodyComponent } from './body/body.component';
 import { FooterComponent } from './footer/footer.component';
+import { DetailComponent } from './detail/detail.component';
 
 
 @NgModule({
-    declarations: [HeaderComponent, BodyComponent, FooterComponent],
+    declarations: [HeaderComponent, BodyComponent, FooterComponent, DetailComponent],
   exports: [
     HeaderComponent,
     FooterComponent,
