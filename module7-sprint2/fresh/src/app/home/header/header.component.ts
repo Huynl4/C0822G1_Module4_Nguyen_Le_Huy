@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ViewportScroller} from '@angular/common';
 import {TokenService} from '../../service/token.service';
 import {ShareService} from '../../service/share.service';
 import {LoginService} from '../../service/login.service';
 import Swal from 'sweetalert2';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +16,7 @@ export class HeaderComponent implements OnInit {
   isLogged = false;
   role = '';
 
-  constructor(private scroller: ViewportScroller, private token: TokenService, private share: ShareService, private loginService: LoginService) {
+  constructor(private scroller: ViewportScroller, private token: TokenService, private share: ShareService, private loginService: LoginService,private router: Router) {
   }
 
   ngOnInit(): void {
@@ -48,5 +49,15 @@ export class HeaderComponent implements OnInit {
       '',
       'success');
 
+  }
+  @Input() searchInput: string = '';
+
+
+  scrollToTopLogin() {
+    window.scroll(0, 0);
+  }
+
+  onSearch() {
+    this.router.navigate(['/search'],{queryParams: {'name': this.searchInput } })
   }
 }

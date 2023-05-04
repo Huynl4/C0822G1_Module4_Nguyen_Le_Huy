@@ -24,4 +24,19 @@ public class ProductService implements IProductService {
     public List<Product> getListFruit(Pageable pageable) {
         return productRepository.getListFruit(pageable);
     }
+
+    @Override
+    public Product findByIdProductDetail(int id) {
+        return productRepository.findByIdProductDetail(id);
+    }
+
+    @Override
+    public List<Product> getListSearchResults(String keyword, Pageable pageable) {
+        return productRepository.getListSearchResults(keyword,pageable);
+    }
+
+    @Override
+    public List<Product> getListSearchResultsOption(String keyword, int id, Pageable pageable) {
+        return productRepository.getListSearchResultsOption(keyword, id, pageable);
+    }
 }

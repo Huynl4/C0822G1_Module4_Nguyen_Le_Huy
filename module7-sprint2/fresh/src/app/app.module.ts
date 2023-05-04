@@ -6,18 +6,22 @@ import { AppComponent } from './app.component';
 import {HomeModule} from "./home/home.module";
 import {LogInModule} from "./log-in/log-in.module";
 import {HttpClientModule} from '@angular/common/http';
+import { ListSearchComponent } from './list-search/list-search/list-search.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ListSearchComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HomeModule,
-    LogInModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HomeModule,
+        LogInModule,
+        HttpClientModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

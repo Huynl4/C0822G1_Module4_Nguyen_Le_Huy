@@ -5,6 +5,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -17,4 +18,13 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
 
     @Query(value = "select * from product where category_id = 2", nativeQuery = true)
     List<Product> getListFruit(Pageable pageable);
+
+    @Query(value = "select * from product where product.id = :id", nativeQuery = true)
+    Product findByIdProductDetail(int id);
+
+    @Query( value = "select * from product where product.name like concat('%',:keyword,'%')", nativeQuery = true)
+    List<Product> getListSearchResults(@Param("keyword") String keyword, Pageable pageable);
+
+    @Query( value = "select * from product where product.name like concat('%',:keyword,'%') and product.category_id =:id", nativeQuery = true)
+    List<Product> getListSearchResultsOption(@Param("keyword") String keyword,@Param("id") int id, Pageable pageable);
 }
