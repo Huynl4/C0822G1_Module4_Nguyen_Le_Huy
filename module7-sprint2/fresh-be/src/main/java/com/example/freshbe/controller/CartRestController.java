@@ -38,12 +38,12 @@ public class CartRestController {
         cart.setAccount(account);
         cart.setProduct(product);
         cart.setSize(cartDto.getSize());
-        if (cartService.existsByProductIdAndAccountId(cart.getProduct().getId(),cart.getAccount().getId(),cart.getSize())) {
-            Cart cart1 = cartService.findByProductIdAndAccountId(cart.getProduct().getId(),cart.getAccount().getId(),cart.getSize());
+        if (cartService.existsByProductIdAndAccountId(cart.getProduct().getId(), cart.getAccount().getId(), cart.getSize())) {
+            Cart cart1 = cartService.findByProductIdAndAccountId(cart.getProduct().getId(), cart.getAccount().getId(), cart.getSize());
             cart1.setQuantity(cart1.getQuantity() + 1);
             cart1.setSize(cart1.getSize());
             cartService.createCart(cart1);
-        }else {
+        } else {
             Cart cart1 = new Cart();
             cart1.setQuantity(cartDto.getQuantity());
             cart1.setSize(cartDto.getSize());
@@ -59,6 +59,7 @@ public class CartRestController {
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
     @PostMapping("/increase")
     public ResponseEntity<?> increaseQuantity(@RequestBody CartDTO cartDto) {
         Cart cart = new Cart();
@@ -67,7 +68,7 @@ public class CartRestController {
         BeanUtils.copyProperties(cartDto, cart);
         cart.setAccount(accounts);
         cart.setProduct(product);
-        Cart cart1 = cartService.findByProductIdAndAccountId(cart.getProduct().getId(),cart.getAccount().getId(),cart.getSize());
+        Cart cart1 = cartService.findByProductIdAndAccountId(cart.getProduct().getId(), cart.getAccount().getId(), cart.getSize());
         if (cart1 != null) {
             cart1.setQuantity(cart1.getQuantity() + 1);
         } else {
@@ -75,7 +76,7 @@ public class CartRestController {
             cart1.setProduct(cart.getProduct());
             cart1.setAccount(cart.getAccount());
             cart1.setSize(cart.getSize());
-            cart1.setQuantity(cartDto.getQuantity()+1);
+            cart1.setQuantity(cartDto.getQuantity() + 1);
         }
 
         cartService.createCart(cart1);
@@ -90,7 +91,7 @@ public class CartRestController {
         BeanUtils.copyProperties(cartDto, cart);
         cart.setAccount(accounts);
         cart.setProduct(product);
-        Cart cart1 = cartService.findByProductIdAndAccountId(cart.getProduct().getId(),cart.getAccount().getId(),cart.getSize());
+        Cart cart1 = cartService.findByProductIdAndAccountId(cart.getProduct().getId(), cart.getAccount().getId(), cart.getSize());
         if (cart1 != null) {
             cart1.setQuantity(cart1.getQuantity() - 1);
         } else {
@@ -98,7 +99,7 @@ public class CartRestController {
             cart1.setProduct(cart.getProduct());
             cart1.setAccount(cart.getAccount());
             cart1.setSize(cart.getSize());
-            cart1.setQuantity(cartDto.getQuantity()+1);
+            cart1.setQuantity(cartDto.getQuantity() + 1);
         }
 
         cartService.createCart(cart1);
@@ -106,12 +107,13 @@ public class CartRestController {
     }
 
     @GetMapping("/list/{id}")
-    public ResponseEntity<List<Cart>> showList(@PathVariable("id") Integer id){
+    public ResponseEntity<List<Cart>> showList(@PathVariable("id") Integer id) {
         List<Cart> carts = cartService.findCartByAccountId(id);
         return new ResponseEntity<>(carts, HttpStatus.OK);
     }
+
     @DeleteMapping("/deleteCart/{id}")
-    public ResponseEntity<?> deleteCart(@PathVariable("id") Integer id){
+    public ResponseEntity<?> deleteCart(@PathVariable("id") Integer id) {
         cartService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
