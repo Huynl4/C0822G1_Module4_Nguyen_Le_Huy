@@ -132,4 +132,11 @@ export class TokenService {
     window.localStorage.clear();
     window.sessionStorage.clear();
   }
+
+  //  getIdAccount(): string {
+  //   if(localStorage.getItem(this.ID_ACCOUNT_KEY) != null){
+  //     return <string> localStorage.getItem(this.ID_ACCOUNT_KEY);
+  //   }
+  //   return <string> sessionStorage.getItem(this.ID_ACCOUNT_KEY);
+  // }
 }

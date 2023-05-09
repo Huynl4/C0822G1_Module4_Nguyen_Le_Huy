@@ -18,6 +18,7 @@ public class UserPrinciple implements UserDetails {
     private String password;
     private String email;
     private String phoneNumber;
+    
     private Collection<? extends GrantedAuthority> roles;
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

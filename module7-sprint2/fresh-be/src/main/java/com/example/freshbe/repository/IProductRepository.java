@@ -20,11 +20,17 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
     List<Product> getListFruit(Pageable pageable);
 
     @Query(value = "select * from product where product.id = :id", nativeQuery = true)
-    Product findByIdProductDetail(int id);
+    Product findByIdProductDetail(long id);
 
     @Query( value = "select * from product where product.name like concat('%',:keyword,'%')", nativeQuery = true)
     List<Product> getListSearchResults(@Param("keyword") String keyword, Pageable pageable);
 
     @Query( value = "select * from product where product.name like concat('%',:keyword,'%') and product.category_id =:id", nativeQuery = true)
     List<Product> getListSearchResultsOption(@Param("keyword") String keyword,@Param("id") int id, Pageable pageable);
+
+
+    @Query(value = "select * from product " +
+            "where id =:id ",
+            nativeQuery = true)
+    Product findProduct(@Param("id") long id);
 }

@@ -6,6 +6,7 @@ import { HeaderComponent } from './header/header.component';
 import { BodyComponent } from './body/body.component';
 import { FooterComponent } from './footer/footer.component';
 import { DetailComponent } from './detail/detail.component';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { DetailComponent } from './detail/detail.component';
   ],
     imports: [
         CommonModule,
-        HomeRoutingModule
+        HomeRoutingModule,
+        FormsModule
     ]
 })
 export class HomeModule { }

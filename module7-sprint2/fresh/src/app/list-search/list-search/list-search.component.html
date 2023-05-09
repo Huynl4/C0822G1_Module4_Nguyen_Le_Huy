@@ -1,66 +1,59 @@
-<br>
-<div class="row line-img">
-  .
-</div>
-<!-- blog -->
-<div class="blog">
+<div class="container-xxl py-5">
   <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="titlepage text_align_center ">
-          <h3>Kết qủa tìm kiếm: {{keyword}}</h3>
-          <p>Đến shop để có thể thể xem kĩ hơn</p>
-          <div class="row">
-            <div class="col-md-2">
-              <select (click)="hiddenStt()" [(ngModel)]="selectedOption" (ngModelChange)="changeListForOption()" class="ctools-jump-menu-select ctools-jump-menu-change form-select ctools-jump-menu-processed" id="SELECT_1" name="jump">
-                <option [hidden]="hiddenSt == true" value="0"  selected [disabled]="hiddenSt == false" class="OPTION">
-                  - Bạn chọn loại gì? -
-                </option>
-                <option *ngFor="let option of aquaTypeList" [ngValue]="option.id">{{option.name}}</option>
-              </select>
-            </div>
-          </div>
+    <div class="row g-0 gx-5 align-items-end">
+      <div class="col-lg-6">
+        <div class="section-header text-start mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+          <h1 class="display-5 mb-3">Sản phẩm</h1>
+          <p>Giữ gìn sức khỏe bằng chất dinh dưỡng tự nhiên - Khám phá ngay các loại rau củ quả tươi ngon từ trang trại chúng tôi!</p>
         </div>
+      </div>
+      <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
+        <ul class="nav nav-pills d-inline-flex justify-content-end mb-5">
+          <li class="nav-item me-2">
+            <a class="btn btn-outline-primary border-2 active" data-bs-toggle="pill">Rau quả</a>
+          </li>
+          <li class="nav-item me-2">
+            <a class="btn btn-outline-primary border-2" data-bs-toggle="pill">Trái cây</a>
+          </li>
+          <li class="nav-item me-0">
+            <a class="btn btn-outline-primary border-2" data-bs-toggle="pill" href="#tab-3">Nước ép</a>
+          </li>
+        </ul>
       </div>
     </div>
 
-    <div class="row d_flex">
-      <div class=" col-md-4" *ngFor="let product of listSearchResults , index as i">
-        <div class="latest close1">
-          <div class="style">
-            <figure><img style="width: 330px; height: 275px" [src]="product.image" alt="#"/></figure>
-            <span class="yellow bellow_header">Số.{{i + 1}}</span>
-          </div>
-          <div class="nostrud">
-            <h3>{{product.name}}</h3>
-            <!--            <p style="text-indent: inherit ">{{product.description}}</p>-->
-            <p style="padding: 0;margin:0 0 16px ;background-color: white;color: black"><strong
-              style="color: red">Giá: {{product.price | number}} VND</strong></p>
-            <!--            <a class="read_more" href="blog.html">Xem thêm</a>-->
-            <div class=" d-flex justify-content-between ">
-              <a routerLink="/detail/detail/{{product.id}}" class=" p-0 read_more " style="color: white;">Chi
-                tiết <i class="fas fa-eye mr-1" style="color: #0cc4d4"></i></a>
-              <a href="" class=" p-0 read_more" style="color: white">Thêm vào <i
-                class="fas fa-shopping-cart mr-1" style="color: #0cc4d4;"></i></a>
+    <div class="tab-content">
+      <div id="tab-1" class="tab-pane fade show p-0 active">
+        <div class="row g-4">
+          <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" *ngFor="let product of listSearchResults,index as i">
+            <div class="product-item" >
+              <div class="position-relative bg-light overflow-hidden">
+                <img class="img-fluid w-100 center" [src]="product.image" alt="" style="width: 300px; height: 300px; object-fit: scale-down">
+                <div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">Mới</div>
+              </div>
+              <div class="text-center p-4">
+                <a class="d-block h5 mb-2" href="">{{product?.name}}</a>
+                <span class="text-primary me-1">{{product.price}}</span>
+                <span class="text-body text-decoration-line-through">29.000Đ</span>
+              </div>
+              <div class="d-flex border-top">
+                <small class="w-50 text-center border-end py-2">
+                  <a class="text-body" routerLink="/detail/{{product.id}}"><i class="fa fa-eye text-primary me-2"></i>Xem chi tiết</a>
+                </small>
+                <small class="w-50 text-center py-2">
+                  <a class="text-body" href=""><i class="fa fa-shopping-bag text-primary me-2"></i>Thêm vào giỏ hàng</a>
+                </small>
+              </div>
             </div>
+          </div>
+          <div class="col-12 text-center">
           </div>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-5"></div>
-      <div class="col-md-2">
-        <button href="" class=" p-0 read_more" style="color: white ; left: 20px  ;text-align: center"
-                *ngIf="hasMore" (click)="loadMore()">Xem thêm
-        </button>
-        <button href="" class=" p-0 read_more" style="color: white ; left: 20px  ;text-align: center"
-                *ngIf="!hasMore" (click)="reset()">Thu gọn
-        </button>
-      </div>
-      <div class="col-md-5"></div>
-    </div>
   </div>
 </div>
+
 
 
 

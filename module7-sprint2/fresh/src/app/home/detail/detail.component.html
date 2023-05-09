@@ -36,7 +36,7 @@
               <div class="input-group-prepend">
                 <button class="btn btn-outline-secondary decrease-button" type="button">-</button>
               </div>
-              <input type="text" class="form-control text-center quantity-input" value="1" aria-label="Example text with button addon" aria-describedby="button-addon1">
+              <input #quantity type="text" class="form-control text-center quantity-input" value="1" aria-label="Example text with button addon" aria-describedby="button-addon1">
               <div class="input-group-append">
                 <button class="btn btn-outline-secondary increase-button" type="button">+</button>
               </div>
@@ -50,6 +50,7 @@
         </div>
 
         <button routerLink="/orderDetail" class="btn btn-primary py-3 px-5 mr-2">Mua hàng</button>
+        <button (click)="addCart(infoProduct.id,quantity.value)" class="btn btn-primary py-3 px-5 mr-2" style="margin-left: 20px;">Thêm vào giỏ hàng</button>
       </div>
     </div>
   </div>

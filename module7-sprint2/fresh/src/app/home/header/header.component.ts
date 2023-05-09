@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
   account: Account;
   isLogged = false;
   role = '';
-
+  @Input() inputValue: string;
   constructor(private scroller: ViewportScroller, private token: TokenService, private share: ShareService, private loginService: LoginService,private router: Router) {
   }
 
@@ -50,7 +50,6 @@ export class HeaderComponent implements OnInit {
       'success');
 
   }
-  @Input() searchInput: string = '';
 
 
   scrollToTopLogin() {
@@ -58,6 +57,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onSearch() {
-    this.router.navigate(['/search'],{queryParams: {'name': this.searchInput } })
+    this.router.navigate(['/getListSearchResults'],{queryParams: {'name': this.inputValue }})
+    console.log(this.inputValue);
   }
 }

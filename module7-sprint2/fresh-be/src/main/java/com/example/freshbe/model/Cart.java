@@ -1,28 +1,22 @@
 package com.example.freshbe.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import javax.persistence.*;
 
 @Entity
-public class OderDetail {
+public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int quantity;
     private String size;
-
     @ManyToOne
-    @JoinColumn(name = "oder_id", referencedColumnName = "id")
-    @JsonBackReference
-    private Oder oder;
-
+    @JoinColumn(name = "account_id", referencedColumnName = "id")
+    private Account account;
     @ManyToOne
     @JoinColumn(name = "product_id", referencedColumnName = "id")
-    @JsonBackReference
     private Product product;
 
-    public OderDetail() {
+    public Cart() {
     }
 
     public int getId() {
@@ -41,12 +35,12 @@ public class OderDetail {
         this.quantity = quantity;
     }
 
-    public Oder getOder() {
-        return oder;
+    public Account getAccount() {
+        return account;
     }
 
-    public void setOder(Oder oder) {
-        this.oder = oder;
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     public Product getProduct() {

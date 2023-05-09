@@ -8,8 +8,10 @@ import java.util.List;
 public interface IProductService {
     List<Product> getListVegetable(Pageable pageable);
     List<Product> getListFruit(Pageable pageable);
-    Product findByIdProductDetail(int id);
+    Product findByIdProductDetail(long id);
     List<Product> getListSearchResults(String keyword, Pageable pageable);
 
     List<Product> getListSearchResultsOption(String keyword, int id, Pageable pageable);
+
+    Product findById(long id);
 }

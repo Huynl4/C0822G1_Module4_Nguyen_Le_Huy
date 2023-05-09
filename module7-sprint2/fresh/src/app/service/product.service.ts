@@ -25,7 +25,7 @@ export class ProductService {
   }
 
   getListSearchResults(page: number, size: number,keyword: string):Observable<Product[]> {
-    return this.httpClient.get<Product[]>('http://localhost:8080/api/auth/getListSearchResults?page='+page+'&size='+size+'&keyword='+keyword )
+    return this.httpClient.get<Product[]>('http://localhost:8080/api/auth/getListSearchResults?page=' +page+ '&size=' +size+ '&keyword=' +keyword)
   }
 
   getAquaTypeList():Observable<Category[]> {
@@ -33,6 +33,6 @@ export class ProductService {
   }
 
   changeListForOption(page:number,size:number,keyword: string, id: number):Observable<Product[]> {
-    return this.httpClient.get<Product[]>('http://localhost:8080/api/auth/changeListForOptionList?page='+page+'&size='+size+'&keyword='+keyword+"&id="+id)
+    return this.httpClient.get<Product[]>('http://localhost:8080/api/auth/changeListForOptionList?page=' +page+ '&size=' +size+ '&keyword=' +keyword+ "&id=" +id)
   }
 }

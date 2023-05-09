@@ -8,7 +8,7 @@ import java.util.Optional;
 public interface IAccountService {
     Optional<Account> findByUsername(String username);
     Boolean existsByEmail(String email);
-    Optional<Account> findById(Integer id);
+    Account findById(long id);
     Boolean existsByUsername(String username);
     List<Account> findAll();
     void save(Account account);

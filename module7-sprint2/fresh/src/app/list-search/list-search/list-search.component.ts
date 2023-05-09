@@ -28,7 +28,10 @@ export class ListSearchComponent implements OnInit {
     this.loadAquaType();
     this.activatedRoute.queryParams.subscribe(params => {
       this.keyword = params['name'];
-      this.loadAllSearch();
+      this.productService.getListSearchResults(this.page,this.size,this.keyword).subscribe(next=>{
+        console.log(next);
+        this.listSearchResults = next;
+      })
     });
   }
 

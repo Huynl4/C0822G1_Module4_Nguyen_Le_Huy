@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import javax.xml.ws.Action;
 import java.util.List;
 
 @Service
@@ -26,7 +25,7 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public Product findByIdProductDetail(int id) {
+    public Product findByIdProductDetail(long id) {
         return productRepository.findByIdProductDetail(id);
     }
 
@@ -39,4 +38,10 @@ public class ProductService implements IProductService {
     public List<Product> getListSearchResultsOption(String keyword, int id, Pageable pageable) {
         return productRepository.getListSearchResultsOption(keyword, id, pageable);
     }
+
+    @Override
+    public Product findById(long id) {
+        return productRepository.findProduct(id);
+    }
+
 }

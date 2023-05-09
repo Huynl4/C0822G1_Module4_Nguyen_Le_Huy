@@ -25,8 +25,8 @@ public class AccountService implements IAccountService {
     }
 
     @Override
-    public Optional<Account> findById(Integer id) {
-        return iAccountRepository.findById(id);
+    public Account findById(long id) {
+        return iAccountRepository.findById((int) id).orElse(null);
     }
 
     @Override

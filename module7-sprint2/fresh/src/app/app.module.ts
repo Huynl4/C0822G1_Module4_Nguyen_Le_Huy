@@ -8,11 +8,13 @@ import {LogInModule} from "./log-in/log-in.module";
 import {HttpClientModule} from '@angular/common/http';
 import { ListSearchComponent } from './list-search/list-search/list-search.component';
 import {FormsModule} from '@angular/forms';
+import { CartComponent } from './cart/cart/cart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListSearchComponent
+    ListSearchComponent,
+    CartComponent
   ],
     imports: [
         BrowserModule,
