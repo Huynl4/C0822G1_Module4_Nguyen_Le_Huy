@@ -39,6 +39,9 @@
   font-size: 2px;
 }
 
+a , button {
+  cursor: pointer;
+}
 
 /*button {*/
 /*  background-color: #1d580a;*/

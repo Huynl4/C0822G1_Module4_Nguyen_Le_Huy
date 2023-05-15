@@ -33,11 +33,10 @@ export class BodyComponent implements OnInit {
               private token: TokenService,
               private router: Router,
               private shareService: ShareService) {
+    this.loadListVegetable();
   }
 
   ngOnInit(): void {
-    window.scroll(0, 0);
-    this.loadListVegetable();
     // this.loadListFruit();
   }
 
@@ -48,6 +47,7 @@ export class BodyComponent implements OnInit {
     this.productService.getProductVegetable(this.page, this.size).subscribe(products => {
       this.productList = products;
       this.hasMore = products.length === this.size;
+      console.log('ádasdasd');
     });
   }
 

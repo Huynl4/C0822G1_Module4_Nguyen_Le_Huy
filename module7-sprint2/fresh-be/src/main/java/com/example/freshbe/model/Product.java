@@ -14,8 +14,10 @@ public class Product {
     private double price;
     private String description;
     private String image;
+    private int quantity;
 
     @OneToMany(mappedBy = "product")
+    @JsonBackReference
     private Set<OderDetail> oderDetailSet;
 
     @ManyToOne
@@ -92,5 +94,13 @@ public class Product {
 
     public void setSupplier(Supplier supplier) {
         this.supplier = supplier;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

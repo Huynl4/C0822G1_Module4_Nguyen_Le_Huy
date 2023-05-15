@@ -11,4 +11,5 @@ export interface Product {
   orderDetail?: OrderDetail;
   category?: Category;
   supplier?: Supplier;
+  quantity?: number;
 }

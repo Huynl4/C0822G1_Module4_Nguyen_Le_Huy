@@ -20,8 +20,8 @@ public class Account {
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles = new HashSet<>();
 
-    @OneToMany(mappedBy = "account")
-    private Set<Oder> oderSet;
+//    @OneToMany(mappedBy = "account")
+//    private Set<Oder> oderSet;
 
     public Account() {
     }
@@ -106,11 +106,11 @@ public class Account {
         this.id = id;
     }
 
-    public Set<Oder> getOderSet() {
-        return oderSet;
-    }
-
-    public void setOderSet(Set<Oder> oderSet) {
-        this.oderSet = oderSet;
-    }
+//    public Set<Oder> getOderSet() {
+//        return oderSet;
+//    }
+//
+//    public void setOderSet(Set<Oder> oderSet) {
+//        this.oderSet = oderSet;
+//    }
 }

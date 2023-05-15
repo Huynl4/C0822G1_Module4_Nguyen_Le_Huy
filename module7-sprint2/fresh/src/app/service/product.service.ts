@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Product} from '../entity/product';
 import {Observable} from 'rxjs';
 import {Category} from '../entity/category';
+import {Account} from '../entity/account';
 
 @Injectable({
   providedIn: 'root'
@@ -34,5 +35,9 @@ export class ProductService {
 
   changeListForOption(page:number,size:number,keyword: string, id: number):Observable<Product[]> {
     return this.httpClient.get<Product[]>('http://localhost:8080/api/auth/changeListForOptionList?page=' +page+ '&size=' +size+ '&keyword=' +keyword+ "&id=" +id)
+  }
+  findByIdAccount(id: number): Observable<any> {
+    debugger
+    return this.httpClient.get<any>('http://localhost:8080/api/auth/info/' + id);
   }
 }

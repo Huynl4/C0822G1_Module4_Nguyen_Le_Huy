@@ -12,4 +12,5 @@ public interface IAccountService {
     Boolean existsByUsername(String username);
     List<Account> findAll();
     void save(Account account);
+    Account findByIdAccount(long id);
 }

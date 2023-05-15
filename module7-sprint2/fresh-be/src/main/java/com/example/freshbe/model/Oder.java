@@ -13,9 +13,11 @@ public class Oder {
     @Column(columnDefinition = "date", nullable = false)
     private String oderDate;
 
+    private double total;
+
     @ManyToOne
-    @JoinColumn(name = "account_id", referencedColumnName = "id")
-    @JsonBackReference
+//    @JoinColumn(name = "account_id", referencedColumnName = "id")
+//    @JsonBackReference
     private Account account;
 
     public Oder() {
@@ -43,5 +45,13 @@ public class Oder {
 
     public void setAccount(Account account) {
         this.account = account;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
     }
 }

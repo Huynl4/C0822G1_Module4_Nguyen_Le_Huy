@@ -5,6 +5,8 @@ import {TokenService} from '../../service/token.service';
 import {Cart} from '../../entity/cart';
 import Swal from 'sweetalert2';
 import {ShareService} from '../../service/share.service';
+import {render} from 'creditcardpayments/creditCardPayments';
+import {OrderService} from '../../service/order.service';
 
 @Component({
   selector: 'app-cart',
@@ -21,12 +23,14 @@ export class CartComponent implements OnInit {
 
   constructor(private cartService: CartService,
               private tokenService: TokenService,
-              private shareService: ShareService) {
+              private shareService: ShareService,
+              private orderService: OrderService) {
 
   }
 
   ngOnInit(): void {
     this.getCartList();
+    this.getValue();
   }
 
   // getValue(size: string) {
@@ -38,31 +42,28 @@ export class CartComponent implements OnInit {
   //     }
   //   }
   // }
-  getTotal() {
-    this.total = 0
-    for (let i = 0; i < this.cartDto.length; i++) {
-      this.total += this.cartDto[i].quantity * this.cartDto[i].product.price
-    }
-  }
-  getValue(size: string) {
+  isPaypal: boolean = false;
+
+  getValue() {
     this.total = 20000;
     if (this.cartDto != null) {
       this.quantity = this.cartDto.length;
       for (let i = 0; i < this.cartDto.length; i++) {
-        if (this.cartDto[i].size == 'Một ngón' || size == 'Một ngón') {
+        if (this.cartDto[i].size == '10kg' ) {
           this.total += this.cartDto[i].product.price * this.cartDto[i].quantity;
         }
-        if (this.cartDto[i].size == 'Hai ngón' || size == 'Hai ngón') {
-          this.total += this.cartDto[i].product.price * this.cartDto[i].quantity + 100000 ;
+        if (this.cartDto[i].size == '15kg' ) {
+          this.total += (this.cartDto[i].product.price + 15000) * this.cartDto[i].quantity  ;
         }
-        if (this.cartDto[i].size == 'Ba ngón' || size == 'Ba ngón') {
-          this.total += this.cartDto[i].product.price * this.cartDto[i].quantity + 250000 ;
+        if (this.cartDto[i].size == '20kg' ) {
+          this.total += (this.cartDto[i].product.price  + 20000) * this.cartDto[i].quantity  ;
+          debugger
         }
-        if (this.cartDto[i].size == 'Bốn ngón' || size == 'Bốn ngón') {
-          this.total += this.cartDto[i].product.price * this.cartDto[i].quantity + 500000 ;
+        if (this.cartDto[i].size == '30kg' ) {
+          this.total += (this.cartDto[i].product.price + 30000) * this.cartDto[i].quantity  ;
         }
-        if (this.cartDto[i].size == 'Bàn tay' || size == 'Bàn tay') {
-          this.total += this.cartDto[i].product.price * this.cartDto[i].quantity + 800000 ;
+        if (this.cartDto[i].size == '35kg' ) {
+          this.total += (this.cartDto[i].product.price + 35000) * this.cartDto[i].quantity  ;
         }
       }
     }
@@ -72,7 +73,6 @@ export class CartComponent implements OnInit {
     this.idAccount = Number(this.tokenService.getId());
     this.cartService.showAllCart(this.idAccount).subscribe(next => {
       this.cartDto = next;
-      this.getTotal()
     });
   }
 
@@ -86,14 +86,14 @@ export class CartComponent implements OnInit {
           cancelButtonColor: '#0099FF',
           cancelButtonText: 'Đã hiểu'
         });
-        this.getCartList();
-        this.getValue(size);
+        this.getValue();
         return;
       }
     }
+    debugger
     this.cartService.editCart(size, cart, productId, +this.tokenService.getId()).subscribe(next => {
       this.getCartList();
-      this.getValue(size);
+      this.getValue();
     });
     this.shareService.sendClickEvent();
   }
@@ -102,8 +102,7 @@ export class CartComponent implements OnInit {
     this.cartService.increaseQuantity(this.tokenService.getId(), productId, size).subscribe(next => {
       this.shareService.sendClickEvent();
       this.getCartList();
-      this.getValue(size);
-      this.getTotal()
+      this.getValue();
     });
   }
 
@@ -111,15 +110,65 @@ export class CartComponent implements OnInit {
     this.cartService.reduceQuantity(this.tokenService.getId(), productId, size).subscribe(next => {
       this.shareService.sendClickEvent();
       this.getCartList();
-      this.getValue(size);
-      this.getTotal()
+      this.getValue();
     });
   }
   deleteCart(id) {
     this.cartService.deleteCart(id).subscribe(next => {
       this.shareService.sendClickEvent();
+      Swal.fire({
+        title: 'Gỡ bỏ thành công khỏi giỏ hàng!',
+        // html: '<img src="' + this.cartDto[i].product.image + '" style="width:200px; height: 110px">',
+        cancelButtonColor: '#0099FF',
+        // cancelButtonText: 'Đã hiểu'
+      });
       this.getCartList();
-      this.getTotal()
+      this.getValue()
     });
+  }
+
+  paypal() {
+    debugger
+    this.isPaypal = true;
+    let money = +((this.total + 20000) / 23485.5).toFixed(2);
+    render({
+      currency: 'USD',
+      id: '#paypal',
+      value: String(money),
+      onApprove: (details) => {
+        this.addBill();
+        this.shareService.getClickEvent();
+      }
+    });
+  }
+
+  private addBill() {
+    let currentTime = new Date();
+    let formatTime = currentTime.toLocaleString();
+    this.orderService.addBill(this.tokenService.getId(), this.total, formatTime).subscribe(next => {
+      Swal.fire({
+        position: 'center',
+        title: 'Đã thanh toán thành công',
+        icon: 'success',
+        showConfirmButton: false,
+        timer: 2000
+      });
+      this.cartDto = [];
+      this.loader();
+      this.shareService.sendClickEvent();
+    }, error => {
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Thanh toán thất bại!',
+        text: 'Thanh toán thất bại',
+        showConfirmButton: false,
+        timer: 2000
+      });
+    });
+  }
+
+  private loader() {
+
   }
 }

@@ -43,4 +43,9 @@ public class AccountService implements IAccountService {
     public void save(Account account) {
         iAccountRepository.save(account);
     }
+
+    @Override
+    public Account findByIdAccount(long id) {
+        return iAccountRepository.findByIdAccount(id);
+    }
 }

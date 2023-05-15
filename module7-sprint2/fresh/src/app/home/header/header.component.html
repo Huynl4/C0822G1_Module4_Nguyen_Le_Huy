@@ -41,7 +41,7 @@
         </div>
         <a class="nav-item nav-link active" routerLink="">Trang chủ</a>
         <a class="nav-item nav-link">Thông tin về shop</a>
-        <a class="nav-item nav-link">Sản phẩm</a>
+        <a class="nav-item nav-link" (click)="scrollToElement()">Sản phẩm</a>
         <div class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Tiện ích</a>
           <div class="dropdown-menu m-0">
@@ -55,6 +55,9 @@
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{account.name}}</a>
           <div class="dropdown-menu m-0">
             <a (click)="logout()" class="dropdown-item">Đăng xuất</a>
+            <a routerLink="/history/{{account.id}}" class="dropdown-item">Lịch sủ mua hàng</a>
+<!--            <a href="/info" class="dropdown-item">Thông tin cá nhân</a>-->
+            <li><a (click)="getInfoAccount(account.id)" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#info" href="#">Thông tin cá nhân</a></li>
           </div>
         </div>
       </div>
@@ -77,7 +80,7 @@
 
 
 <!-- Carousel Start -->
-<div class="container-fluid p-0 mb-5 wow fadeIn" data-wow-delay="0.1s">
+<div class="container-fluid p-0 mb-5 wow fadeIn" data-wow-delay="0.1s" >
   <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
@@ -87,7 +90,7 @@
             <div class="row justify-content-start">
               <div class="col-lg-7">
                 <h1 class="display-2 mb-5 animated slideInDown">Thực phẩm hữu cơ tốt cho sức khỏe</h1>
-                <a routerLink="" class="btn btn-primary rounded-pill py-sm-3 px-sm-5">Sản phẩm</a>
+                <button type="button" class="btn btn-primary rounded-pill py-sm-3 px-sm-5" (click)="scrollToElement()">Sản phẩm</button>
                 <a href="" class="btn btn-secondary rounded-pill py-sm-3 px-sm-5 ms-3">Dịch vụ</a>
               </div>
             </div>
@@ -119,5 +122,35 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
+  </div>
+</div>
+
+
+<!--modalInfo-->
+<div class="modal fade" id="info" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1> <b>Thông tin cá nhân</b></h1>
+      </div>
+      <div class="modal-body" >
+        <div class="row">
+          <div class="col-4"><div ><img style="height: 250px;width: 100%" src="{{account.avatar}}"></div></div>
+          <div class="col-8">
+            <div style="font-size: 20px"> <b>Tên khách hàng :</b> {{account.name}}</div>
+            <br>
+<!--            <div style="font-size: 20px"><b>Ngày sinh:</b> {{infoAccount.phoneNumber}}</div><br>-->
+            <div style="font-size: 20px"><b>Địa chỉ:</b> {{account.address}}</div><br>
+            <div style="font-size: 20px"><b>Số điện thoại:</b> {{account.phoneNumber}}</div><br>
+            <div style="font-size: 20px"><b>Email:</b> {{account.email}}</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Thoát</button>
+        <button type="submit" data-bs-dismiss="modal" class="btn btn-danger">Chỉnh sửa </button>
+      </div>
+    </div>
   </div>
 </div>

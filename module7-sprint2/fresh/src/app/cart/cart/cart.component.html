@@ -3,7 +3,6 @@
 <!--  <h1 class="text-center">giỏ hàng của bạn đang trống</h1>-->
 <!--  <button class="btn btn-primary" style="margin-top: 50px" routerLink="/">Vào mua hàng</button>-->
 <!--</div>-->
-
 <!--*ngIf="quantity!=0"-->
 <h1>Giỏ hàng</h1>
 <section style="background-color: white">
@@ -30,15 +29,17 @@
                       <h6 class="text-black mb-0">{{x.product.name}}</h6>
                     </div>
 
-                    <label for="size">Chọn khối lượng :</label>
-                    <select id="select" #select (change)="setSize(select.value,x?.id,x.product.id,x.product.name)"
-                            id="size" class="form-control">
-                      <option [selected]="x.size =='10kg'" [value]="'10kg'">10 kg</option>
-                      <option [selected]="x.size =='20kg'" [value]="'20kg'">20 kg</option>
-                      <option [selected]="x.size =='30kg'" [value]="'30kg'">30 kg</option>
-                      <option [selected]="x.size =='40kg'" [value]="'40kg'">40 kg</option>
-                      <option [selected]="x.size =='50kg'" [value]="'50kg'">50 kg</option>
-                    </select>
+                    <div class="col-md-1 col-lg-3 col-xl-3">
+                      <label for="size">Chọn khối lượng :</label>
+                      <select id="select" #select (change)="setSize(select.value,x?.id,x.product.id,x.product.name)"
+                              id="size" class="form-control">
+                        <option [selected]="x.size =='10kg'" [value]="'10kg'">10kg</option>
+                        <option [selected]="x.size =='15kg'" [value]="'15kg'">15kg</option>
+                        <option [selected]="x.size =='20kg'" [value]="'20kg'">20kg</option>
+                        <option [selected]="x.size =='30kg'" [value]="'30kg'">30kg</option>
+                        <option [selected]="x.size =='35kg'" [value]="'35kg'">35kg</option>
+                      </select>
+                    </div>
 
                     <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                       <button [disabled]="x.quantity == 1" style="background-color: #FF9933" class="btn btn-link px-2"
@@ -54,11 +55,16 @@
                     </div>
                     <div class="col-md-2 col-lg-1 col-xl-2 " style="text-align: center">
                       <ng-container>
-                        <h6 *ngIf="select.value == 'Một ngón'" style="text-align: center" class="mb-0">{{(x.product.price * x.quantity) | number}}đ</h6>
-                        <h6 *ngIf="select.value == 'Hai ngón'" style="text-align: center" class="mb-0">{{(x.product.price +100000) * x.quantity | number}}đ</h6>
-                        <h6 *ngIf="select.value == 'Ba ngón'" style="text-align: center" class="mb-0">{{(x.product.price + 250000) * x.quantity | number}}đ</h6>
-                        <h6 *ngIf="select.value == 'Bốn ngón'" style="text-align: center" class="mb-0">{{(x.product.price + 500000) * x.quantity | number}}đ</h6>
-                        <h6 *ngIf="select.value == 'Bàn tay'" style="text-align: center" class="mb-0">{{(x.product.price  + 800000 ) * x.quantity | number}}đ</h6>
+                        <h6 *ngIf="select.value == 'Một ngón'" style="text-align: center"
+                            class="mb-0">{{(x.product.price * x.quantity) | number}}đ</h6>
+                        <h6 *ngIf="select.value == 'Hai ngón'" style="text-align: center"
+                            class="mb-0">{{(x.product.price + 100000) * x.quantity | number}}đ</h6>
+                        <h6 *ngIf="select.value == 'Ba ngón'" style="text-align: center"
+                            class="mb-0">{{(x.product.price + 250000) * x.quantity | number}}đ</h6>
+                        <h6 *ngIf="select.value == 'Bốn ngón'" style="text-align: center"
+                            class="mb-0">{{(x.product.price + 500000) * x.quantity | number}}đ</h6>
+                        <h6 *ngIf="select.value == 'Bàn tay'" style="text-align: center"
+                            class="mb-0">{{(x.product.price + 800000) * x.quantity | number}}đ</h6>
                       </ng-container>
                     </div>
 
@@ -66,10 +72,10 @@
                       <h6 class="mb-0">{{x.product.price | number}}đ</h6>
                     </div>
 
-                                        <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                          <a class="text-muted"><i style="cursor: pointer" class="fas fa-times" (click)="deleteCart(x.id)"></i></a>
-                                        </div>
-
+                    <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                      <a class="text-muted"><i style="cursor: pointer" class="fas fa-times"
+                                               (click)="deleteCart(x.id)"></i></a>
+                    </div>
                     <hr class="my-4">
                   </div>
 
@@ -113,10 +119,10 @@
                     <h5 class="text-uppercase">Tổng tiền</h5>
                     <h5>{{total + 20000 | number}} đ</h5>
                   </div>
-<!--                  <button *ngIf="isPaypal == false" type="button" (click)="paypal()"-->
-<!--                          class="btn btn-dark btn-block btn-lg1"-->
-<!--                          data-mdb-ripple-color="dark">Thanh toán-->
-<!--                  </button>-->
+                  <button *ngIf="isPaypal == false" type="button" (click)="paypal()"
+                          class="btn btn-dark btn-block btn-lg1"
+                          data-mdb-ripple-color="dark">Thanh toán
+                  </button>
                   <div id="paypal"></div>
                 </div>
               </div>

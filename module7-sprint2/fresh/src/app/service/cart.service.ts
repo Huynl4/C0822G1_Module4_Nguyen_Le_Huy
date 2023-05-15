@@ -37,10 +37,10 @@ export class CartService {
     let dto = {
       id: id,
       size: size,
-      accounts: userId,
-      aquaProduct: productId,
+      account: userId,
+      productId: productId,
     };
-    return this.httpClient.post('http://localhost:8080/api/public/cart/edit', dto);
+    return this.httpClient.post('http://localhost:8080/api/cart/edit', dto);
   }
 
   reduceQuantity(id, productId, size): Observable<any> {
@@ -55,4 +55,5 @@ export class CartService {
 
     return this.httpClient.delete('http://localhost:8080/api/cart/deleteCart/'+ id);
   }
+
 }

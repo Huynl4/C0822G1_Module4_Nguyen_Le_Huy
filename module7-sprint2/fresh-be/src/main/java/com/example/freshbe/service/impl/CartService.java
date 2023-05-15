@@ -27,12 +27,12 @@ public class CartService implements ICartService {
 
     @Override
     public Boolean existsByProductIdAndAccountId(int productId, Integer accountId, String size) {
-        return cartRepository.existsByProductIdAndAccountIdAndSize(productId, accountId,size);
+        return cartRepository.existsByProductIdAndAccountIdAndSize(productId, accountId, size);
     }
 
     @Override
     public Cart findByProductIdAndAccountId(int productId, Integer accountId, String size) {
-        return cartRepository.findByProductIdAndAccountIdAndSize(productId, accountId,size);
+        return cartRepository.findByProductIdAndAccountIdAndSize(productId, accountId, size);
     }
 
     @Override
@@ -48,5 +48,25 @@ public class CartService implements ICartService {
     @Override
     public Cart findById(int id) {
         return cartRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Cart> findAll(Long id) {
+        return cartRepository.findAllCart(id);
+    }
+
+    @Override
+    public void updateSize(int id, String size) {
+        cartRepository.updateCart(id, size);
+    }
+
+    @Override
+    public void deleteCartByIdUser(Long account) {
+        cartRepository.deleteCartById(account);
+    }
+
+    @Override
+    public List<Cart> findAllByUser(Account account) {
+        return cartRepository.findAllByAccount(account);
     }
 }

@@ -17,4 +17,12 @@ public interface ICartService {
     void createCart(Cart cart);
 
     Cart findById(int id);
+
+    List<Cart> findAll(Long id);
+
+    void updateSize(int id, String size);
+
+    void deleteCartByIdUser(Long account);
+
+    List<Cart> findAllByUser(Account byId);
 }

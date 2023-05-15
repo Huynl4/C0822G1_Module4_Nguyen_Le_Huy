@@ -1,11 +1,10 @@
 package com.example.freshbe.controller;
 
 import com.example.freshbe.dto.CartDTO;
-import com.example.freshbe.model.Account;
-import com.example.freshbe.model.Cart;
-import com.example.freshbe.model.Product;
+import com.example.freshbe.model.*;
 import com.example.freshbe.service.IAccountService;
 import com.example.freshbe.service.ICartService;
+import com.example.freshbe.service.IOrderService;
 import com.example.freshbe.service.IProductService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +27,9 @@ public class CartRestController {
 
     @Autowired
     private IProductService productService;
+
+    @Autowired
+    private IOrderService orderService;
 
     @PostMapping("/create")
     public ResponseEntity<?> createOrUpdate(@RequestBody CartDTO cartDto) {
@@ -115,6 +117,43 @@ public class CartRestController {
     @DeleteMapping("/deleteCart/{id}")
     public ResponseEntity<?> deleteCart(@PathVariable("id") Integer id) {
         cartService.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PostMapping("/edit")
+    public ResponseEntity<?> editSize(@RequestBody CartDTO cartDTO) {
+        Cart cart = new Cart();
+        List<Cart> carts = cartService.findAll(cartDTO.getAccountId());
+        for (int i = 0; i < carts.size(); i++) {
+            if (carts.get(i).getSize().equals(cartDTO.getSize())  && carts.get(i).getProduct().getId() == cartDTO.getProductId() && carts.get(i).getAccount().getId()==cartDTO.getAccountId()) {
+
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            }
+        }
+        BeanUtils.copyProperties(cartDTO, cart);
+        cartService.updateSize(cart.getId(),cart.getSize());
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PostMapping("/buy")
+    public ResponseEntity<?> buy(@RequestBody OderProductDTO oderProductDTO) {
+//        System.out.println(oderProductDTO.getId());
+        List<Cart> list = cartService.findAllByUser(accountService.findById(oderProductDTO.getAccount()));
+        System.out.println(oderProductDTO.getDateOrder());
+        Oder bill = new Oder();
+        bill.setOderDate(oderProductDTO.getDateOrder());
+        bill.setTotal(oderProductDTO.getTotal());
+        bill.setAccount(accountService.findById(oderProductDTO.getAccount()));
+        orderService.addBill(bill);
+        for (int i = 0; i < list.size(); i++) {
+            OderDetail billHistory = new OderDetail();
+            billHistory.setOder(bill);
+            billHistory.setQuantity(list.get(i).getQuantity());
+            billHistory.setProduct(list.get(i).getProduct());
+            billHistory.setSize(list.get(i).getSize());
+            orderService.addBillHistory(billHistory);
+        }
+        cartService.deleteCartByIdUser(oderProductDTO.getAccount());
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

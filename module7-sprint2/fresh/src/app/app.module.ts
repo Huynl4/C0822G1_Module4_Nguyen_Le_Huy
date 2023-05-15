@@ -9,12 +9,16 @@ import {HttpClientModule} from '@angular/common/http';
 import { ListSearchComponent } from './list-search/list-search/list-search.component';
 import {FormsModule} from '@angular/forms';
 import { CartComponent } from './cart/cart/cart.component';
+import { InfoComponent } from './info/info/info.component';
+import { HistoryComponent } from './history/history.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListSearchComponent,
-    CartComponent
+    CartComponent,
+    InfoComponent,
+    HistoryComponent
   ],
     imports: [
         BrowserModule,
