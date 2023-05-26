@@ -1,5 +1,4 @@
 package com.example.freshbe.security.userPrincipcal;
-
 import com.example.freshbe.model.Account;
 import com.example.freshbe.repository.IAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
